@@ -19,10 +19,10 @@ public class TestList {
         List<String> c = new Vector<>();
 
         /**
-         *                  initialCapacity     data structure
-         * Vector           10                  Object[]
-         * LinkedList       无                   Node
-         * ArrayList        10                  Object[]
+         *                  initialCapacity     data structure      security
+         * Vector           10                  Object[]            Y
+         * LinkedList       无                   Node                N
+         * ArrayList        10                  Object[]            N
          *
          */
 
