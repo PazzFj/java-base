@@ -76,6 +76,8 @@ public class App
         AbstractTemplate at = new TemplateTest();
         at.temp();
 
+        //Singleton
+        new Thread().start();
 
     }
 }
