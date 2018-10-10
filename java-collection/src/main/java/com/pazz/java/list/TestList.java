@@ -16,22 +16,15 @@ public class TestList {
         //  List<E> ==>> Collection<E> ==>> Iterable<E>
         // ArrayList extends AbstractList<E> implements List<E>, RandomAccess, Cloneable, java.io.Serializable
         List<String> arrayList = new ArrayList<>();
+        List<String> vectorList = new Vector<>();
         // LinkedList extends AbstractSequentialList<E> implements List<E>, Deque<E>, Cloneable, java.io.Serializable
         List<String> linkedList = new LinkedList<>();
-        List<String> vectorList = new Vector<>();
-
-//        Integer s = Integer.valueOf(10);
-//        System.out.println(s);
-
-        String str2 = sun.misc.VM.getSavedProperty("com.pazz.java.list.TestClass.str1");
-        System.out.println(str2);
 
         /**
          *                  initialCapacity     data structure      security        grow
          * Vector           10                  Object[]            Y               2倍
-         * LinkedList       无                   Node                N               无
+         * LinkedList       无                  Node                 N               无
          * ArrayList        10                  Object[]            N               1.5倍
-         *
          */
 
 
