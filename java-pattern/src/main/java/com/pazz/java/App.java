@@ -9,6 +9,9 @@ import com.pazz.java.proxy.CglibProxyFactory;
 import com.pazz.java.proxy.ISinger;
 import com.pazz.java.proxy.Singer;
 import com.pazz.java.proxy.SingerStaticProxy;
+import com.pazz.java.singleton.SingletonA;
+import com.pazz.java.singleton.SingletonB;
+import com.pazz.java.singleton.SingletonC;
 import com.pazz.java.template.AbstractTemplate;
 import com.pazz.java.template.TemplateTest;
 
@@ -61,6 +64,12 @@ public class App
                 return null;
             }
         });
+
+        ISinger dynamicProxy2 = (ISinger) Proxy.newProxyInstance(singer.getClass().getClassLoader(), singer.getClass().getInterfaces(), (o, m, a) -> {
+                m.invoke(singer, a);
+                return null;
+            });
+
         dynamicProxy.sing();
 
         /**
@@ -78,6 +87,21 @@ public class App
 
         //Singleton
         new Thread().start();
+
+        SingletonA singletonA1 = SingletonA.getInstance();
+        SingletonA singletonA2 = SingletonA.getInstance();
+        System.out.println(singletonA1);
+        System.out.println(singletonA2);
+
+        SingletonB singletonB1 = SingletonB.getInstance();
+        SingletonB singletonB2 = SingletonB.getInstance();
+        System.out.println(singletonB1);
+        System.out.println(singletonB2);
+
+        SingletonC singletonC1 = SingletonC.initialInstance();
+        SingletonC singletonC2 = SingletonC.initialInstance();
+        System.out.println(singletonC1);
+        System.out.println(singletonC2);
 
     }
 }
