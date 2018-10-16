@@ -27,10 +27,7 @@ public class App
         }
         List<Integer> lists = Arrays.asList(cache);
         System.out.println(lists);
-        System.out.println(16 + (-low));
-        System.out.println(cache[128]);
-        System.out.println(cache[16 + (-low)]);
-
+        System.out.println(cache[-128 + (-low)]);  //如果是大于0的数， 数组小标肯定大于128
 
     }
 }

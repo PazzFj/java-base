@@ -20,6 +20,15 @@ public class TestList {
         // LinkedList extends AbstractSequentialList<E> implements List<E>, Deque<E>, Cloneable, java.io.Serializable
         List<String> linkedList = new LinkedList<>();
 
+        linkedList.add("aaa");
+        linkedList.add("vvv");
+        linkedList.add("sss");
+        linkedList.add("zzz");
+        linkedList.add("www");
+
+        String value = linkedList.get(2);
+        System.out.println(value);
+
         /**
          *                  initialCapacity     data structure      security        grow
          * Vector           10                  Object[]            Y               2倍
