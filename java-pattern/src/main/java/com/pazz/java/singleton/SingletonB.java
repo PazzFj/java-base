@@ -3,7 +3,7 @@ package com.pazz.java.singleton;
 /**
  * @author: Peng Jian
  * @create: 2018/10/9 10:25
- * @description:
+ * @description: 第二种单列模式 饿汉式
  */
 public class SingletonB {
 
