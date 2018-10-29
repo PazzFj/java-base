@@ -11,10 +11,49 @@ public class LinkedListExample<E> {
     transient NodeExample<E> last;
     transient int size = 0;
 
-    public boolean add(E element){
+    public boolean add(E element) {
         linkLast(element);
         return true;
     }
+
+    public int size(){
+        return size;
+    }
+
+    public E get(int index){
+        checkElementIndex(index);
+        return node(index).item;
+    }
+
+    /**
+     *  遍历得到下标所对应的值
+     */
+    NodeExample<E> node(int index){
+        if(index < size >> 1){
+            NodeExample<E> x = first;
+            for (int i =0; i < index; i++){
+                x = x.next;
+            }
+            return x;
+        }else{
+            NodeExample<E> x = last;
+            for (int i = size-1; i > index; i--){
+                x = x.prev;
+            }
+            return x;
+        }
+    }
+
+    private void checkElementIndex(int index){
+        if(!isElementIndex(index)){
+            throw new IllegalStateException("index out~");
+        }
+    }
+
+    private boolean isElementIndex(int index){
+        return index >=0 && index < size;
+    }
+
 
     void linkLast(E element) {
         final NodeExample l = last;
@@ -28,13 +67,37 @@ public class LinkedListExample<E> {
         size++;
     }
 
-    private void linkFirst(E element){
+    public void add(int index, E element){
+        checkElementIndex(index); //+1
+        if(index == size){
+            linkLast(element);
+        }else {
+            linkBefore(element, node(index));
+        }
+    }
+
+    /*
+        succ 下标对应的链点
+     */
+    private void linkBefore(E element, NodeExample<E> succ){
+        final NodeExample<E> pred = succ.prev; //
+        final NodeExample<E> newNode = new NodeExample<>(pred, element, succ);
+        succ.prev = newNode;
+        if(pred == null){
+            first = newNode;
+        }else{
+            pred.next = newNode;
+        }
+        size++;
+    }
+
+    private void linkFirst(E element) {
         final NodeExample<E> f = first;
         final NodeExample<E> newNode = new NodeExample<>(null, element, f);
-        first = newNode; //添加在头部
-        if(f == null){
+        first = newNode;
+        if (f == null) {
             last = newNode;
-        }else {
+        } else {
             f.prev = newNode;
         }
         size++;
