@@ -10,7 +10,7 @@ import java.util.Date;
  * @create: 2018/10/15 10:05
  * @description:
  */
-public class Test {
+public class DateTest {
 
     public static void main(String[] args) {
         Calendar cal = Calendar.getInstance();

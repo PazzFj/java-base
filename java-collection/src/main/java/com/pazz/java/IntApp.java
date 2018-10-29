@@ -7,7 +7,7 @@ import java.util.List;
  * Hello world!
  *
  */
-public class App 
+public class IntApp
 {
     public static void main( String[] args )
     {
