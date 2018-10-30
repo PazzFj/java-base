@@ -7,7 +7,7 @@ import java.util.List;
  * Hello world!
  *
  */
-public class IntApp
+public class IntCache
 {
     public static void main( String[] args )
     {

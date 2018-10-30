@@ -22,7 +22,7 @@ public class TestMap {
 
         /**
          *                          initialCapacity         data structure                  security            grow
-         *    HashMap               16                      Node<K,V> / TreeNode<K,V>
+         *    HashMap               16                      Node<K,V> / TreeNode<K,V>       no                  1.5
          *    HashTable
          *    ConcurrentHashMap
          *
