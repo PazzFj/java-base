@@ -93,6 +93,18 @@
 
   </dependencies>
 
+  <distributionManagement>
+    <repository>
+      <id>releases</id>
+      <url>http://47.98.219.97:8081/repository/maven-public/</url>
+    </repository>
+    <snapshotRepository>
+      <id>Snapshots</id>
+      <url>http://47.98.219.97:8081/repository/maven-public/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+
   <build>
     <pluginManagement>
       <plugins>
