@@ -1,10 +1,9 @@
 package com.pazz.java;
 
+import com.pazz.java.jdbc.DBHelper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import util.DBHelper;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

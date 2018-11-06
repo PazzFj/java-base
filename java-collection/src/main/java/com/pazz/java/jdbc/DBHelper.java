@@ -1,4 +1,4 @@
-package com.pazz.java;
+package com.pazz.java.jdbc;
 
 import java.sql.*;
 
