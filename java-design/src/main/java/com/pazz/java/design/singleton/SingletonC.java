@@ -7,13 +7,14 @@ package com.pazz.java.design.singleton;
  */
 public class SingletonC {
 
-    private SingletonC(){}
-
-    public static SingletonC initialInstance(){
-        return SingletonCa.singleton;
+    private SingletonC() {
     }
 
-    private static class SingletonCa{
+    public static SingletonC initialInstance() {
+        return SingletonHolder.singleton;
+    }
+
+    private static class SingletonHolder {
 
         private static final SingletonC singleton = new SingletonC();
 

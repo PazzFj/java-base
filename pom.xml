@@ -12,6 +12,7 @@
         <module>java-design</module>
         <module>java-collection</module>
         <module>java-database</module>
+        <module>java-core</module>
     </modules>
 
     <properties>

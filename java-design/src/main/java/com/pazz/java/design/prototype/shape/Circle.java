@@ -10,11 +10,19 @@ import com.pazz.java.design.prototype.Shape;
 public class Circle extends Shape {
 
     public Circle(String id, String type) {
+        setId(id);
         super.type = type;
     }
 
     @Override
     public void draw() {
         System.out.println("Circle Circle Circle");
+    }
+
+    @Override
+    public String toString() {
+        return "Circle{" +
+                "type='" + type + '\'' +
+                '}';
     }
 }

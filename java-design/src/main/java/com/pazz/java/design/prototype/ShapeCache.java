@@ -20,21 +20,21 @@ public class ShapeCache {
         return (Shape) shape.clone();
     }
 
+    /**
+     * 加入缓存map中
+     */
     public static void loadCache() {
         Circle circle = new Circle("1", "circle Type");
         circle.setId("1");
         hashTable.put(circle.getId(), circle);
-        System.out.println(circle);
 
         Rectangle rectangle = new Rectangle("2", "rectangle Type");
         rectangle.setId("2");
         hashTable.put(rectangle.getId(), rectangle);
-        System.out.println(rectangle);
 
         Square square = new Square("3", "square Type");
         square.setId("3");
         hashTable.put(square.getId(), square);
-        System.out.println(square);
     }
 
 }

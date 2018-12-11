@@ -13,12 +13,11 @@ public class RedisTest {
 //        Jedis jedis = new Jedis("47.98.219.97", 6379);
 
         Redis_Helper redisHelper = Redis_Helper.getInstance();
-        Jedis jedis = redisHelper.getJedis("47.98.219.97", 6379);
-        jedis.set("name", "Pj");
+        Jedis jedis = redisHelper.getJedis("127.0.0.1", 6379);
+        jedis.set("name", "Pja");
         String value = jedis.get("name");
         System.out.println(value);
-        jedis.close();
-        redisHelper.closeJedis(jedis, "47.98.219.97", 6379);
+        redisHelper.closeJedis(jedis, "127.0.0.1", 6379);
     }
 
 }

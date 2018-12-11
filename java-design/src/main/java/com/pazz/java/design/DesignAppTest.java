@@ -15,8 +15,6 @@ import com.pazz.java.design.template.TemplateTest;
 import com.pazz.java.design.proxy.Singer;
 import com.pazz.java.design.proxy.SingerStaticProxy;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
@@ -28,7 +26,7 @@ import java.lang.reflect.Proxy;
  * strategy 策略模式
  * template 模板模式
  */
-public class App 
+public class DesignAppTest
 {
     public static void main( String[] args ) throws Exception
     {
@@ -38,7 +36,7 @@ public class App
         exectorManager.doWork();
 
         //prototype  -------->> Object.clone();
-        ShapeCache.loadCache();
+        ShapeCache.loadCache(); //加载数据
         Shape shape = ShapeCache.getShape("2");
         System.out.println(shape);
 
@@ -48,46 +46,33 @@ public class App
          *         // 也就不能算作代理模式了。所以这里的包含是关键。
          *         // 缺点：这种实现方式很直观也很简单，但其缺点是代理对象必须提前写出，如果接口层发生了变化，代理对象的代码也要进行维护。
          *         // 如果能在运行时动态地写出代理对象，不但减少了一大批代理类的代码，也少了不断维护的烦恼，不过运行时的效率必定受到影响。
+         *
+         *          //在Spring的AOP编程中：
+         *          //如果加入容器的目标对象有实现接口，用JDK代理
+         *          //如果目标对象没有实现接口，用Cglib代理
          */
-        //proxy（Static Proxy）
+        //静态代理（Static Proxy）
         ISinger singer = new Singer();
-        ISinger proxy = new SingerStaticProxy(singer);
-        proxy.sing();
-
-        //proxy (Dynamic Proxy)
-        ISinger dynamicProxy = (ISinger) Proxy.newProxyInstance(singer.getClass().getClassLoader(), singer.getClass().getInterfaces(), new InvocationHandler() {
-            @Override
-            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                System.out.println("Dynamic 向观众问好");
-                method.invoke(singer, args);
-                System.out.println("Dynamic 谢谢大家");
-                return null;
-            }
+        ISinger staticProxy = new SingerStaticProxy(singer);
+        staticProxy.sing();
+        //动态代理 (Dynamic Proxy)      InvocationHandler
+        ISinger dynamicProxy = (ISinger) Proxy.newProxyInstance(singer.getClass().getClassLoader(), singer.getClass().getInterfaces(), (o, m, p) -> {
+            System.out.println("Dynamic 向观众问好");
+            m.invoke(singer, p);
+            System.out.println("Dynamic 谢谢大家");
+            return null;
         });
-
-        ISinger dynamicProxy2 = (ISinger) Proxy.newProxyInstance(singer.getClass().getClassLoader(), singer.getClass().getInterfaces(), (o, m, a) -> {
-                m.invoke(singer, a);
-                return null;
-            });
-
         dynamicProxy.sing();
-
-        /**
-         *         //在Spring的AOP编程中：
-         *         //如果加入容器的目标对象有实现接口，用JDK代理
-         *         //如果目标对象没有实现接口，用Cglib代理
-         */
         // Cglib
         Singer proxyFactory = (Singer) new CglibProxyFactory(singer).getProxyInstance();
         proxyFactory.sing();
+
 
         //Template
         AbstractTemplate at = new TemplateTest();
         at.temp();
 
-        //Singleton
-        new Thread().start();
-
+        //Singleton  =================== volatile 内存可见性
         SingletonA singletonA1 = SingletonA.getInstance();
         SingletonA singletonA2 = SingletonA.getInstance();
         System.out.println(singletonA1);

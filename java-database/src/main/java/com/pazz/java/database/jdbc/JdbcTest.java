@@ -14,7 +14,7 @@ public class JdbcTest {
         PreparedStatement ps = connection.prepareStatement("select * from person");
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-            System.out.println("p_id" + rs.getInt(1) + " pname" + rs.getString(2) + " page" + rs.getInt(3));
+            System.out.println("pid： " + rs.getInt(1) + " pname： " + rs.getString(2) + " page： " + rs.getInt(3));
         }
         Jdbc_Helper.myClose(connection, ps, rs);
 

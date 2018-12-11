@@ -10,11 +10,19 @@ import com.pazz.java.design.prototype.Shape;
 public class Rectangle extends Shape {
 
     public Rectangle(String id, String type) {
+        setId(id);
         super.type = type;
     }
 
     @Override
     public void draw() {
         System.out.println("Rectangle Rectangle Rectangle   ");
+    }
+
+    @Override
+    public String toString() {
+        return "Rectangle{" +
+                "type='" + type + '\'' +
+                '}';
     }
 }

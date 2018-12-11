@@ -10,11 +10,19 @@ import com.pazz.java.design.prototype.Shape;
 public class Square extends Shape {
 
     public Square(String id, String type) {
+        setId(id);
         super.type = type;
     }
 
     @Override
     public void draw() {
         System.out.println("Square Square Square");
+    }
+
+    @Override
+    public String toString() {
+        return "Square{" +
+                "type='" + type + '\'' +
+                '}';
     }
 }
