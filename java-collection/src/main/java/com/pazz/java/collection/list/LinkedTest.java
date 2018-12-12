@@ -24,9 +24,7 @@ public class LinkedTest {
         linkedList.add("aaa");
         linkedList.add("vvv");
         linkedList.add("sss");
-        linkedList.add("zzz");
-        linkedList.add("www");
-        linkedList.add(4, "pengjian");
+        linkedList.add(2, "pengjian");
         String value = linkedList.get(4);
         System.out.println(value);
     }

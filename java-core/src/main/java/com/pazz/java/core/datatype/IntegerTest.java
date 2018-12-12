@@ -6,13 +6,23 @@ import java.util.List;
 /**
  * Integer 缓存池 -128~127
  */
-public class IntegerCacheTest {
+public class IntegerTest {
 
     public static void main(String[] args) {
         //自动装箱
-        Integer ia = Integer.valueOf(16);
-        int a = ia.intValue();
-        System.out.println(a);
+        Integer i1 = Integer.valueOf(127);
+        Integer i2 = Integer.valueOf(127);
+        Integer i3 = 127; //Integer.valueOf(127);
+        Integer i4 = 127; //Integer.valueOf(127);
+        System.out.println(i1 == i2); // true
+        System.out.println(i3 == i4); // true
+
+        //二进制
+        System.out.println(Integer.toBinaryString(10));
+        //八进制
+        System.out.println(Integer.toOctalString(10));
+        //十六进制
+        System.out.println(Integer.toHexString(10));
 
         int low = -128;
         int high = 127;
