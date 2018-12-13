@@ -1,7 +1,11 @@
 package com.pazz.java.core.executor;
 
+import lombok.Data;
+
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -12,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class ExecutorTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         //(创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。)
         ExecutorService es1 = Executors.newFixedThreadPool(5);
         //(创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。)
@@ -36,6 +40,9 @@ public class ExecutorTest {
         es4.schedule(new Task("pengjian2"), 5, TimeUnit.SECONDS);
         es4.schedule(new Task("pengjian3"), 10, TimeUnit.SECONDS);
 
+        //回调函数
+        Future<String> future = es1.submit(new CallTask<String>("peng"));
+        System.out.println(future.get());
 
         es1.shutdown();
         es2.shutdown();
@@ -43,25 +50,32 @@ public class ExecutorTest {
         es4.shutdown();
     }
 
+    @Data
     static class Task implements Runnable {
-
         private String name;
 
         public Task(String name) {
             this.name = name;
         }
 
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
         @Override
         public void run() {
             System.out.println("my Task..." + this.name);
+        }
+    }
+
+    @Data
+    static class CallTask<V> implements Callable<V> {
+        private V v;
+
+        public CallTask(V v) {
+            this.v = v;
+        }
+
+        @Override
+        public V call() throws Exception {
+            System.out.println("通过处理.. 回调函数!" + v);
+            return (V) (v + "jian");
         }
     }
 

@@ -16,13 +16,13 @@ public class StringTest {
         System.out.println(strA.startsWith("湘A")); //测试这个字符串是否以指定的前缀开始。
 
         String plate = "abc YY dd 66666";
-        System.out.println(plate.toLowerCase()); //小写
-        System.out.println(plate.toUpperCase()); //大写
-        System.out.println(plate.contains("YY"));
-        plate = new StringBuffer(plate).append("KKK").toString();
-        System.out.println(plate);
+        System.out.println("小写: " + plate.toLowerCase()); //小写
+        System.out.println("大写: " + plate.toUpperCase()); //大写
+        System.out.println("String.contains():" + plate.contains("YY"));
+        System.out.println("StringBuffer.append(): " + new StringBuffer(plate).append("KKK").toString());
         String names = StringUtils.join(Lists.newArrayList("张三", "李四", "王五"), ",");
-        names.split(",");
+        System.out.println("split: " + names.split(",")[0]);
+        System.out.println("indexOf: " + plate.indexOf("YY"));
     }
 
 }

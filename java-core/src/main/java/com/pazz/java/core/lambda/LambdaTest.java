@@ -1,6 +1,7 @@
 package com.pazz.java.core.lambda;
 
 import com.google.common.collect.Lists;
+import lombok.Data;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,10 +25,24 @@ public class LambdaTest {
         LambdaEntity le2 = new LambdaEntity("zs", "002");
         LambdaEntity le3 = new LambdaEntity("ls", "003");
         LambdaEntity le4 = new LambdaEntity("ls", "004");
-        List<LambdaEntity> entityLists1 = Lists.newArrayList(le1, le2, le3, le4); //底层 Collections.addAll(list, elements);
+//        List<LambdaEntity> entityLists1 = Lists.newArrayList(le1, le2, le3, le4); //底层 Collections.addAll(list, elements);
         List<LambdaEntity> entityLists = Arrays.asList(le1, le2, le3, le4);  //原生态
         Map<String, List<LambdaEntity>> map = entityLists.stream().collect(Collectors.groupingBy(entity -> entity.getName(), Collectors.toList()));
         System.out.println(map);
+    }
+
+    @Data
+    private static class LambdaEntity {
+        private String name;
+        private String code;
+
+        public LambdaEntity() {
+        }
+
+        public LambdaEntity(String name, String code) {
+            this.name = name;
+            this.code = code;
+        }
     }
 
 }

@@ -40,6 +40,22 @@ public class ValTransmitTest {
         v1 = new Val("kobe");//生成新得对象
         System.out.println(v1);
         System.out.println(v2);
+
+        // *********************数组传递***********************
+        String[] oldStr = new String[10];
+        oldStr[0] = "a0";
+        oldStr[2] = "a2";
+        oldStr[4] = "a4";
+        oldStr[6] = "a6";
+        String[] newStr = oldStr;
+//        oldStr = null;
+        newStr[0] = "b0";
+        newStr[2] = "b2";
+        newStr[4] = "b3";
+        for (int i = 0; i < newStr.length; i++) {
+//            System.out.print(newStr[i] + " , ");
+            System.out.print(oldStr[i] + " _ ");
+        }
     }
 
     static class Val {
