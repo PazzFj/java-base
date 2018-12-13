@@ -24,16 +24,6 @@ public class BigDecimalTest {
         System.out.println(b3); // 1.1
         System.out.println("************************");
 
-        //f结尾有 / d结尾无  / 默认结尾无
-        double a = 0.2f;
-        double b = 0.2d;
-        double c = 0.2;
-        System.out.println(a);      // 0.20000000298023224
-        System.out.println(b);      // 0.2
-        System.out.println(c);      // 0.2
-        System.out.println(a + b);  // 0.40000000298023225
-        System.out.println("************************");
-
         BigDecimal bd1 = new BigDecimal("1.5");
         BigDecimal bd2 = new BigDecimal("1.5");
         BigDecimal bd3 = new BigDecimal(BigDecimal.ROUND_UP);
