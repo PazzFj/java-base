@@ -47,14 +47,21 @@ public class ValTransmitTest {
         oldStr[2] = "a2";
         oldStr[4] = "a4";
         oldStr[6] = "a6";
-        String[] newStr = oldStr;
+        String[] newStr = oldStr;  //赋予之后改变旧的值，新的也发生改变了
 //        oldStr = null;
-        newStr[0] = "b0";
-        newStr[2] = "b2";
+        oldStr[0] = "b0";
+        newStr[8] = "b8";           ////赋予之后改变新的值，旧的也发生改变了
         newStr[4] = "b3";
         for (int i = 0; i < newStr.length; i++) {
 //            System.out.print(newStr[i] + " , ");
-            System.out.print(oldStr[i] + " _ ");
+            System.out.print(oldStr[i] + " - ");
+
+        }
+        System.out.println();
+        for (int i = 0; i < newStr.length; i++) {
+//            System.out.print(newStr[i] + " , ");
+            System.out.print(newStr[i] + " - ");
+
         }
     }
 

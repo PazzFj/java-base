@@ -11,20 +11,24 @@ import java.util.Map;
 public class HashMapTest {
 
     public static void main(String[] args) {
-        IMap<String, String> map = new HashMapExample<>();
-        for (int i = 0; i < 300; i++) {
-            map.put("k_" + i, "v_" + i);
+        Map<String, String> map = new HashMap<>();
+        for (int i = 0; i < 500; i++) {
+            map.put("k_" + tableSizeFor(i), "v_" + tableSizeFor(i));
         }
-        System.out.println(map.size());
-
-//        Map<Test, Test> map2 = new HashMap<>();
-//        for (int i = 0; i < 300; i++) {
-//            map2.put(new Test("test"), new Test("test"));
-//        }
+        System.out.println(map);
     }
 
-    static class Test{
+    static final int tableSizeFor(int cap) {
+        int n = cap - 1;
+        n |= n >>> 1;
+        n |= n >>> 2;
+        n |= n >>> 4;
+        n |= n >>> 8;
+        n |= n >>> 16;
+        return (n < 0) ? 1 : (n >= (1 << 30)) ? (1 << 30) : n + 1;
+    }
 
+    static class Test {
         private String key;
 
         public Test(String key) {
