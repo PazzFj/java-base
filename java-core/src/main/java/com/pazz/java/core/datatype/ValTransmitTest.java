@@ -1,5 +1,8 @@
 package com.pazz.java.core.datatype;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author: Peng Jian
  * @create: 2018/10/30 9:36
@@ -37,32 +40,26 @@ public class ValTransmitTest {
         // ********************引用传递***********************
         Val v1 = new Val("admin");
         Val v2 = v1;
-        v1 = new Val("kobe");//生成新得对象
+        v2.setName("sync");// = new Val("kobe");//生成新得对象
         System.out.println(v1);
         System.out.println(v2);
 
         // *********************数组传递***********************
-        String[] oldStr = new String[10];
-        oldStr[0] = "a0";
-        oldStr[2] = "a2";
-        oldStr[4] = "a4";
-        oldStr[6] = "a6";
-        String[] newStr = oldStr;  //赋予之后改变旧的值，新的也发生改变了
-//        oldStr = null;
-        oldStr[0] = "b0";
-        newStr[8] = "b8";           ////赋予之后改变新的值，旧的也发生改变了
-        newStr[4] = "b3";
-        for (int i = 0; i < newStr.length; i++) {
-//            System.out.print(newStr[i] + " , ");
-            System.out.print(oldStr[i] + " - ");
+        List<String> namesA = newNames();
+        List<String> namesB = namesA;
+        namesB.add("新增DD");
+        namesA.add("修改UU");
+        System.out.println(namesA);
+        System.out.println(namesB);
+    }
 
-        }
-        System.out.println();
-        for (int i = 0; i < newStr.length; i++) {
-//            System.out.print(newStr[i] + " , ");
-            System.out.print(newStr[i] + " - ");
-
-        }
+    public static List newNames(){
+        List<String> names = new ArrayList<>();
+        names.add("A原子性");
+        names.add("C一致性");
+        names.add("I隔离性");
+        names.add("D持久性");
+        return names;
     }
 
     static class Val {

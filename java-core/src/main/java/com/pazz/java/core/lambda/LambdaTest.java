@@ -1,6 +1,5 @@
 package com.pazz.java.core.lambda;
 
-import com.google.common.collect.Lists;
 import lombok.Data;
 
 import java.util.Arrays;
@@ -16,7 +15,7 @@ import java.util.stream.Collectors;
 public class LambdaTest {
 
     public static void main(String[] args) {
-        List<String> lists = Lists.newArrayList("admin", "admin1", "admin2", "pj");
+        List<String> lists = Arrays.asList("admin", "admin1", "admin2", "pj");
         //过滤条件
         lists = lists.stream().filter(s -> s.startsWith("admin")).collect(Collectors.toList());
         System.out.println(lists);

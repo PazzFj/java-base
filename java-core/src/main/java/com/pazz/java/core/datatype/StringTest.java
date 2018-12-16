@@ -1,7 +1,8 @@
 package com.pazz.java.core.datatype;
 
-import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.Arrays;
 
 /**
  * @author: 彭坚
@@ -20,7 +21,7 @@ public class StringTest {
         System.out.println("大写: " + plate.toUpperCase()); //大写
         System.out.println("String.contains():" + plate.contains("YY"));
         System.out.println("StringBuffer.append(): " + new StringBuffer(plate).append("KKK").toString());
-        String names = StringUtils.join(Lists.newArrayList("张三", "李四", "王五"), ",");
+        String names = StringUtils.join(Arrays.asList("张三", "李四", "王五"), ",");
         System.out.println("split: " + names.split(",")[0]);
         System.out.println("indexOf: " + plate.indexOf("YY"));
     }

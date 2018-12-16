@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class Jdbc_Helper {
 
     private static final String className = "com.mysql.jdbc.Driver";
-    private static final String url = "jdbc:mysql://localhost:3306/test";
+    private static final String url = "jdbc:mysql://120.79.141.169:3306/test";
     private static final String user = "root";
     private static final String password = "sa123"; // 加载驱动
 

@@ -1,7 +1,11 @@
-package com.pazz.java.core.date;
+package com.pazz.java.core.time;
+
+import org.junit.Test;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -12,8 +16,14 @@ import java.util.Date;
  */
 public class DateFormatTest {
 
-    public static void main(String[] args) throws Exception {
+    @Test
+    public void test(){
+        LocalDateTime dateTime = LocalDateTime.now();
+        System.out.println(dateTime);
+        System.out.println(dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+    }
 
+    public static void main(String[] args) throws Exception {
         String format = "yyyy-MM-dd HH:mm:ss";
 
         Date date = new Date();
