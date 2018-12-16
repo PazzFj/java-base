@@ -13,6 +13,7 @@
         <module>java-collection</module>
         <module>java-database</module>
         <module>java-core</module>
+        <module>java-web</module>
     </modules>
 
     <properties>
