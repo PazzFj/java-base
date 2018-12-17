@@ -1,47 +1,55 @@
 package com.pazz.java.core.juc;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
-/**
- * @author: 彭坚
- * @create: 2018/12/16 17:55
- * @description:
+/*
+ * 一、volatile 关键字：当多个线程进行操作共享数据时，可以保证内存中的数据可见。
+ * 					  相较于 synchronized 是一种较为轻量级的同步策略。
+ *
+ * 注意：
+ * 1. volatile 不具备“互斥性”
+ * 2. volatile 不能保证变量的“原子性”
  */
 public class TestVolatile {
 
     public static void main(String[] args) {
-        ThreadDemo demo = new ThreadDemo();
-        new Thread(demo).start();
+        ThreadDemo td = new ThreadDemo();
+        new Thread(td).start();
+
         while (true) {
-            if (demo.getAtomicBoolean().get()) {
-                System.out.println("-----------");
+            if (td.isFlag()) {
+                System.out.println("------------------");
                 break;
             }
         }
+
     }
 
     static class ThreadDemo implements Runnable {
 
-        private AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        private volatile boolean flag = false;
 
         @Override
         public void run() {
+
             try {
                 Thread.sleep(200);
-                atomicBoolean.set(true);
-                System.out.println("flag: " + atomicBoolean.get());
             } catch (InterruptedException e) {
-                e.printStackTrace();
             }
+
+            flag = true;
+
+            System.out.println("flag=" + isFlag());
+
         }
 
-        public AtomicBoolean getAtomicBoolean() {
-            return atomicBoolean;
+        public boolean isFlag() {
+            return flag;
         }
 
-        public void setAtomicBoolean(AtomicBoolean atomicBoolean) {
-            this.atomicBoolean = atomicBoolean;
+        public void setFlag(boolean flag) {
+            this.flag = flag;
         }
+
     }
 
 }
+
