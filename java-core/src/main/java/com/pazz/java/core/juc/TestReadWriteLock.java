@@ -10,6 +10,12 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 public class TestReadWriteLock {
 
+    /*
+     * 1. ReadWriteLock : 读写锁
+     *
+     * 写写/读写 需要“互斥”
+     * 读读 不需要互斥
+     */
     public static void main(String[] args) {
         ReadWriteLockDemo rw = new ReadWriteLockDemo();
 
@@ -18,14 +24,11 @@ public class TestReadWriteLock {
         for (int i = 0; i < 100; i++) {
             new Thread(() -> rw.getNum(), "Read: " + i).start();
         }
-
     }
 
 
     static class ReadWriteLockDemo {
-
         private int num = 0;
-
         private ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
         public void getNum() {
@@ -47,7 +50,6 @@ public class TestReadWriteLock {
                 readWriteLock.writeLock().unlock();
             }
         }
-
     }
 
 }
