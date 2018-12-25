@@ -1,4 +1,4 @@
-package com.pazz.java.core.reflection;
+package com.pazz.java.core.reflect;
 
 /**
  * @author: 彭坚

@@ -2,10 +2,13 @@ package com.pazz.java.core.io;
 
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
@@ -15,6 +18,15 @@ import java.nio.file.StandardOpenOption;
  * @description: NIO 阻塞式与非阻塞式网络通信     non blocking NIO
  */
 public class BlockingNIO {
+
+    @Test
+    public void test() throws Exception {
+//        Path var3 = Paths.get("f:/img/jay2.jpg"); //创建目录
+//        Files.createDirectories(var3);
+//        System.out.println(var3);
+//        byte[] bytes = new byte[1024];
+//        Files.write(var3, bytes);
+    }
 
     //阻塞式的
     @Test

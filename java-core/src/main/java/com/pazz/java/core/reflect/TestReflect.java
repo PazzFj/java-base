@@ -1,4 +1,4 @@
-package com.pazz.java.core.reflection;
+package com.pazz.java.core.reflect;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
