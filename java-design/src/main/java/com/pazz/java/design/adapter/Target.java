@@ -1,4 +1,4 @@
-package com.pazz.java.design.adapter.classadapter;
+package com.pazz.java.design.adapter;
 
 /**
  * @author: 彭坚

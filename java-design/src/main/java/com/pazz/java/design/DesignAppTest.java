@@ -1,7 +1,11 @@
 package com.pazz.java.design;
 
-import com.pazz.java.design.adapter.classadapter.Adapter;
-import com.pazz.java.design.adapter.classadapter.Target;
+import com.pazz.java.design.adapter.Adapter;
+import com.pazz.java.design.adapter.Target;
+import com.pazz.java.design.builder.BikeBuilder;
+import com.pazz.java.design.builder.EngineeringDepartment;
+import com.pazz.java.design.builder.MoBikeBuilder;
+import com.pazz.java.design.builder.OfoBikeBuilder;
 import com.pazz.java.design.decorator.Component;
 import com.pazz.java.design.decorator.concrete.ConcreteComponent;
 import com.pazz.java.design.decorator.concrete.ConcreteDecorator;
@@ -102,6 +106,14 @@ public class DesignAppTest
         System.out.println("****************适配器模式***************");
         Target target = new Adapter();
         target.request();
+
+        /**************************建造者模式******************************/
+        System.out.println("****************建造者模式***************");
+        BikeBuilder builder1 = new MoBikeBuilder();
+        BikeBuilder builder2 = new OfoBikeBuilder();
+        EngineeringDepartment department = new EngineeringDepartment(builder2);
+        department.construct();
+        System.out.println(builder2.getBike());
 
     }
 }
