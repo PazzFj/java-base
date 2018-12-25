@@ -8,6 +8,6 @@ package com.pazz.java.design.proxy;
 public class Singer implements ISinger {
     @Override
     public void sing() {
-        System.out.println("唱一首歌.");
+        System.out.println("我们会的歌.");
     }
 }

@@ -1,7 +1,10 @@
 package com.pazz.java.collection.map;
 
+import org.junit.Test;
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author: 彭坚
@@ -9,6 +12,16 @@ import java.util.Map;
  * @description:
  */
 public class HashMapTest {
+
+    @org.junit.Test
+    public void test(){
+        Map<String, String> map = new ConcurrentHashMap<>();
+        map.put("k1", "v1");
+        map.put("k2", "v2");
+        String value = map.putIfAbsent("k1", "v3");
+        System.out.println(value);
+        System.out.println(map);
+    }
 
     public static void main(String[] args) {
         Map<String, String> map = new HashMap<>();

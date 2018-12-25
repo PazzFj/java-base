@@ -1,7 +1,9 @@
 package com.pazz.java.core.datatype;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author: Peng Jian
@@ -51,6 +53,13 @@ public class ValTransmitTest {
         namesA.add("修改UU");
         System.out.println(namesA);
         System.out.println(namesB);
+
+        //**********************map对象******
+        Map<String, List<String>> map = new HashMap<>();
+        List<String> list = new ArrayList<>();
+        map.put("test", list);
+        list.add("delay");
+        System.out.println(map);
     }
 
     public static List newNames(){

@@ -1,5 +1,10 @@
 package com.pazz.java.design;
 
+import com.pazz.java.design.decorator.Component;
+import com.pazz.java.design.decorator.concrete.ConcreteComponent;
+import com.pazz.java.design.decorator.concrete.ConcreteDecorator;
+import com.pazz.java.design.decorator.concrete.ConcreteDecorator2;
+import com.pazz.java.design.decorator.concrete.ConcreteDecorator3;
 import com.pazz.java.design.delegate.Delegate;
 import com.pazz.java.design.delegate.ExectorA;
 import com.pazz.java.design.delegate.ExectorManager;
@@ -30,12 +35,12 @@ public class DesignAppTest
 {
     public static void main( String[] args ) throws Exception
     {
-        //delegate
+        //delegate 委派模式=代理模式
         Delegate delegate = new ExectorA();
         ExectorManager exectorManager = new ExectorManager(delegate) ;
         exectorManager.doWork();
 
-        //prototype  -------->> Object.clone();
+        //prototype  -------->> Object.clone(); 克隆
         ShapeCache.loadCache(); //加载数据
         Shape shape = ShapeCache.getShape("2");
         System.out.println(shape);
@@ -63,10 +68,9 @@ public class DesignAppTest
             return null;
         });
         dynamicProxy.sing();
-        // Cglib
+        // Cglib  基于拦截
         Singer proxyFactory = (Singer) new CglibProxyFactory(singer).getProxyInstance();
         proxyFactory.sing();
-
 
         //Template
         AbstractTemplate at = new TemplateTest();
@@ -74,19 +78,23 @@ public class DesignAppTest
 
         //Singleton  =================== volatile 内存可见性
         SingletonA singletonA1 = SingletonA.getInstance();
-        SingletonA singletonA2 = SingletonA.getInstance();
-        System.out.println(singletonA1);
-        System.out.println(singletonA2);
+        System.out.println(singletonA1 + "___" + SingletonA.getInstance());
 
         SingletonB singletonB1 = SingletonB.getInstance();
-        SingletonB singletonB2 = SingletonB.getInstance();
-        System.out.println(singletonB1);
-        System.out.println(singletonB2);
+        System.out.println(singletonB1 + "___" + SingletonB.getInstance());
 
         SingletonC singletonC1 = SingletonC.initialInstance();
-        SingletonC singletonC2 = SingletonC.initialInstance();
-        System.out.println(singletonC1);
-        System.out.println(singletonC2);
+        System.out.println(singletonC1 + "___" + SingletonC.initialInstance());
+
+        /********************************************************/
+        System.out.println("****************装饰器模式***************");
+        Component component = new ConcreteComponent();//具体组件
+        Component component1 = new ConcreteDecorator(component);
+        Component component2 = new ConcreteDecorator2(component1);
+        Component component3 = new ConcreteDecorator3(component2);
+//        component1.operation();
+//        component2.operation();
+        component3.operation();
 
     }
 }
