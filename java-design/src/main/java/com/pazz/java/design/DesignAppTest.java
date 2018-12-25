@@ -1,5 +1,7 @@
 package com.pazz.java.design;
 
+import com.pazz.java.design.adapter.classadapter.Adapter;
+import com.pazz.java.design.adapter.classadapter.Target;
 import com.pazz.java.design.decorator.Component;
 import com.pazz.java.design.decorator.concrete.ConcreteComponent;
 import com.pazz.java.design.decorator.concrete.ConcreteDecorator;
@@ -86,7 +88,7 @@ public class DesignAppTest
         SingletonC singletonC1 = SingletonC.initialInstance();
         System.out.println(singletonC1 + "___" + SingletonC.initialInstance());
 
-        /********************************************************/
+        /**************************装饰器模式******************************/
         System.out.println("****************装饰器模式***************");
         Component component = new ConcreteComponent();//具体组件
         Component component1 = new ConcreteDecorator(component);
@@ -95,6 +97,11 @@ public class DesignAppTest
 //        component1.operation();
 //        component2.operation();
         component3.operation();
+
+        /**************************适配器模式******************************/
+        System.out.println("****************适配器模式***************");
+        Target target = new Adapter();
+        target.request();
 
     }
 }
