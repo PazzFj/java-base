@@ -14,6 +14,7 @@
         <module>java-database</module>
         <module>java-core</module>
         <module>java-web</module>
+        <module>java-source</module>
     </modules>
 
     <properties>

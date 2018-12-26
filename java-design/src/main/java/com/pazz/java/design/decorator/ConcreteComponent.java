@@ -1,6 +1,4 @@
-package com.pazz.java.design.decorator.concrete;
-
-import com.pazz.java.design.decorator.Component;
+package com.pazz.java.design.decorator;
 
 /**
  * @author: 彭坚

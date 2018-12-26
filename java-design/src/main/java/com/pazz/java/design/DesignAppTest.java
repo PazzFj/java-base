@@ -7,7 +7,7 @@ import com.pazz.java.design.builder.EngineeringDepartment;
 import com.pazz.java.design.builder.MoBikeBuilder;
 import com.pazz.java.design.builder.OfoBikeBuilder;
 import com.pazz.java.design.decorator.Component;
-import com.pazz.java.design.decorator.concrete.ConcreteComponent;
+import com.pazz.java.design.decorator.ConcreteComponent;
 import com.pazz.java.design.decorator.concrete.ConcreteDecorator;
 import com.pazz.java.design.decorator.concrete.ConcreteDecorator2;
 import com.pazz.java.design.decorator.concrete.ConcreteDecorator3;
