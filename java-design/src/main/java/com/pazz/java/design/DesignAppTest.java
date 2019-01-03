@@ -6,6 +6,10 @@ import com.pazz.java.design.builder.BikeBuilder;
 import com.pazz.java.design.builder.EngineeringDepartment;
 import com.pazz.java.design.builder.MoBikeBuilder;
 import com.pazz.java.design.builder.OfoBikeBuilder;
+import com.pazz.java.design.composite.Employee;
+import com.pazz.java.design.composite.Filer;
+import com.pazz.java.design.composite.Node;
+import com.pazz.java.design.composite.Noder;
 import com.pazz.java.design.decorator.Component;
 import com.pazz.java.design.decorator.ConcreteComponent;
 import com.pazz.java.design.decorator.concrete.ConcreteDecorator;
@@ -21,12 +25,19 @@ import com.pazz.java.design.proxy.ISinger;
 import com.pazz.java.design.singleton.SingletonA;
 import com.pazz.java.design.singleton.SingletonB;
 import com.pazz.java.design.singleton.SingletonC;
+import com.pazz.java.design.strategy.Context;
+import com.pazz.java.design.strategy.Strategy;
+import com.pazz.java.design.strategy.operation.OperationAdd;
+import com.pazz.java.design.strategy.operation.OperationMultiply;
+import com.pazz.java.design.strategy.operation.OperationSubstract;
 import com.pazz.java.design.template.AbstractTemplate;
 import com.pazz.java.design.template.TemplateTest;
 import com.pazz.java.design.proxy.Singer;
 import com.pazz.java.design.proxy.SingerStaticProxy;
 
+import java.io.File;
 import java.lang.reflect.Proxy;
+import java.util.List;
 
 /**
  * delegate 委派模式
@@ -37,13 +48,11 @@ import java.lang.reflect.Proxy;
  * strategy 策略模式
  * template 模板模式
  */
-public class DesignAppTest
-{
-    public static void main( String[] args ) throws Exception
-    {
+public class DesignAppTest {
+    public static void main(String[] args) throws Exception {
         //delegate 委派模式=代理模式
         Delegate delegate = new ExectorA();
-        ExectorManager exectorManager = new ExectorManager(delegate) ;
+        ExectorManager exectorManager = new ExectorManager(delegate);
         exectorManager.doWork();
 
         //prototype  -------->> Object.clone(); 克隆
@@ -115,5 +124,73 @@ public class DesignAppTest
         department.construct();
         System.out.println(builder2.getBike());
 
+        /**************************组合模式******************************/
+        System.out.println("****************组合者模式***************");
+//        Employee CEO = new Employee("John", "CEO", 30000);
+//
+//        Employee headSales = new Employee("Robert", "Head Sales", 20000);
+//        Employee headMarketing = new Employee("Michel", "Head Marketing", 20000);
+//
+//        Employee clerk1 = new Employee("Laura", "Marketing", 10000);
+//        Employee clerk2 = new Employee("Bob", "Marketing", 10000);
+//
+//        Employee salesExecutive1 = new Employee("Richard", "Sales", 10000);
+//        Employee salesExecutive2 = new Employee("Rob", "Sales", 10000);
+//
+//        CEO.add(headSales);
+//        CEO.add(headMarketing);
+//
+//        headSales.add(salesExecutive1);
+//        headSales.add(salesExecutive2);
+//
+//        headMarketing.add(clerk1);
+//        headMarketing.add(clerk2);
+//
+//        //打印该组织的所有员工
+//        System.out.println(CEO);
+//        recursion(CEO.getSubordinates());
+//
+//        System.out.println("************************");
+//        Node node = new Noder("f:/快捷方式");
+//        createTree(node);
+//        node.display();
+
+        /**************************策略模式******************************/
+        System.out.println("****************策略模式***************");
+        Strategy strategy1 = new OperationAdd();
+        Context context = new Context(strategy1);
+        System.out.println(context.executeStrategy(100, 200));
+        strategy1 = new OperationMultiply();
+        context = new Context(strategy1);
+        System.out.println(context.executeStrategy(100, 200));
+        strategy1 = new OperationSubstract();
+        context = new Context(strategy1);
+        System.out.println(context.executeStrategy(100, 200));
+    }
+
+    public static void createTree(Node node) throws Exception {
+        File file = new File(node.getName());
+        File[] f = file.listFiles();
+
+        for (File fi : f) {
+            if (fi.isFile()) {
+                Node filer = new Filer(fi.getAbsolutePath());
+                node.addNode(filer);
+            }
+            if (fi.isDirectory()) {
+                Node noder = new Noder(fi.getAbsolutePath());
+                node.addNode(noder);
+                createTree(noder); //使用递归生成树结构
+            }
+        }
+    }
+
+    public static void recursion(List<Employee> employeeList) {
+        if (!employeeList.isEmpty()) {
+            employeeList.forEach(employee -> {
+                System.out.println(employee);
+                recursion(employee.getSubordinates());
+            });
+        }
     }
 }

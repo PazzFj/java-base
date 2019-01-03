@@ -15,6 +15,7 @@
         <module>java-core</module>
         <module>java-web</module>
         <module>java-source</module>
+        <module>java-test</module>
     </modules>
 
     <properties>

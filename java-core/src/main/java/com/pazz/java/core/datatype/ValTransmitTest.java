@@ -1,5 +1,7 @@
 package com.pazz.java.core.datatype;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +13,15 @@ import java.util.Map;
  * @description: 值传递与对象传递
  */
 public class ValTransmitTest {
+
+    @Test
+    public void test1(){
+        String s1 = "aaa";
+        String s2 = s1;
+        s1.replace("a", "b");
+        System.out.println(s1);
+        System.out.println(s2);
+    }
 
     public static void main(String[] args) {
 
