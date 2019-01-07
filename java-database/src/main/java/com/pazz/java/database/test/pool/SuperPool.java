@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.concurrent.ArrayBlockingQueue;
 
-import com.pazz.java.database.test.DatabaseConfiguration;
+import com.pazz.java.database.test.configuration.DatabaseConfiguration;
 
 public class SuperPool {
 

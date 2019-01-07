@@ -7,8 +7,7 @@ import javax.sql.ConnectionPoolDataSource;
 import javax.sql.DataSource;
 import javax.sql.PooledConnection;
 
-import com.pazz.java.database.test.pool.SuperPool;
-import com.pazz.java.database.test.pool.SuperConnection;
+import com.pazz.java.database.test.configuration.DatabaseConfiguration;
 import com.pazz.java.database.test.pool.SuperPool;
 import com.pazz.java.database.test.pool.SuperPoolConnection;
 import com.pazz.java.database.test.uitl.StringUtils;

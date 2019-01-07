@@ -1,4 +1,4 @@
-package com.pazz.java.database.test;
+package com.pazz.java.database.test.configuration;
 
 import lombok.Data;
 
@@ -24,8 +24,6 @@ public class DatabaseConfiguration {
 	private int maxActive = 0;
 	private long maxWait = 0;
 
-	
-	
 	public DatabaseConfiguration() {
 		// TODO Auto-generated constructor stub
 	}
