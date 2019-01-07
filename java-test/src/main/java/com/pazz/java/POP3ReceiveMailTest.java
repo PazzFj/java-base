@@ -46,7 +46,8 @@ public class POP3ReceiveMailTest {
          * 比如使用好未来企业邮箱 就需要换成 好未来邮箱的 pop服务器地址 pop.263.net  和   端口 110
          */
         String duankou = "110";// 端口号
-        String servicePath = "pop3.163.com";   // 服务器地址
+//        String servicePath = "pop3.163.com";   // 服务器地址
+        String servicePath = "pop3.mxhichina.com";   // 服务器地址
 
         // 准备连接服务器的会话信息
         Properties props = new Properties();
@@ -57,7 +58,7 @@ public class POP3ReceiveMailTest {
         // 创建Session实例对象
         Session session = Session.getInstance(props);
         Store store = session.getStore("pop3");
-        store.connect("15821570290@163.com", "qqqq1234"); //163邮箱程序登录属于第三方登录所以这里的密码是163给的授权密码而并非普通的登录密码
+        store.connect("bc@gangrong.pro", "Gr12345678"); //163邮箱程序登录属于第三方登录所以这里的密码是163给的授权密码而并非普通的登录密码
 
         // 获得收件箱
         Folder folder = store.getFolder("INBOX");
