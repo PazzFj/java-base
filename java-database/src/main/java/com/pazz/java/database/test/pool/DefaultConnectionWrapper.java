@@ -19,30 +19,58 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
 
-public class SuperConnection implements Connection{
-	
-	protected Connection connection;
+import javax.sql.ConnectionEventListener;
+import javax.sql.PooledConnection;
+import javax.sql.StatementEventListener;
 
-	public SuperConnection(Connection connection) {
+/**
+ * 连接池的
+ */
+public class DefaultConnectionWrapper implements PooledConnection, Connection {
+
+	protected Connection connection;
+	
+	//这个类为单列，在此处不会重复加载，还是原来的第一次加载的对象
+	private DefaultConnectionPool defaultConnectionPool = DefaultConnectionPool.getInstance();
+	
+	//连接是否关闭标志位
+	boolean isClosed = false; 
+
+    //在类初始化的时候要求传入一个java.sql.Connection，这是在SuperPool.getConnection() 中进行了set
+	public DefaultConnectionWrapper(Connection connection) {
 		this.connection = connection;
 	}
 
+	//这里去判断接口否关闭的方法进行了自定义的转态控制
+	public boolean isClosed() throws SQLException {
+		return isClosed;
+	}
+	
+    //关闭此连接时会进行连接回收操作
+	public void close() throws SQLException {
+		//将当前对象在已用连接集合中进行移除
+		defaultConnectionPool.removeUse(this);
+		//然后在将当前对象加到可用连接集合中
+		defaultConnectionPool.addDuse(this);
+		//次连接的转态Close转态设置为true
+		isClosed = true;
+		//再将连接设置为null
+		connection = null;
+	}
+	
 	public <T> T unwrap(Class<T> iface) throws SQLException {
 		return connection.unwrap(iface);
 	}
 
 	public boolean isWrapperFor(Class<?> iface) throws SQLException {
-		// TODO Auto-generated method stub
 		return connection.isWrapperFor(iface);
 	}
 
 	public Statement createStatement() throws SQLException {
-		// TODO Auto-generated method stub
 		return connection.createStatement();
 	}
 
 	public PreparedStatement prepareStatement(String sql) throws SQLException {
-		// TODO Auto-generated method stub
 		return connection.prepareStatement(sql);
 	}
 
@@ -70,16 +98,7 @@ public class SuperConnection implements Connection{
 		connection.rollback();		
 	}
 
-	public void close() throws SQLException {
-		connection.close();		
-	}
-
-	public boolean isClosed() throws SQLException {
-		return connection.isClosed();
-	}
-
 	public DatabaseMetaData getMetaData() throws SQLException {
-		// TODO Auto-generated method stub
 		return connection.getMetaData();
 	}
 
@@ -251,4 +270,26 @@ public class SuperConnection implements Connection{
 		return connection.getHoldability();
 	}
 
+	public Connection getConnection() throws SQLException {
+		return connection;
+	}
+
+	public void addConnectionEventListener(ConnectionEventListener listener) {
+		System.out.println("addConnectionEventListener");
+	}
+
+	public void removeConnectionEventListener(ConnectionEventListener listener) {
+		System.out.println("removeConnectionEventListener");
+	}
+
+	public void addStatementEventListener(StatementEventListener listener) {
+		System.out.println("addStatementEventListener");
+	}
+
+	public void removeStatementEventListener(StatementEventListener listener) {
+		System.out.println("removeStatementEventListener");
+	}
+
+	
 }
+

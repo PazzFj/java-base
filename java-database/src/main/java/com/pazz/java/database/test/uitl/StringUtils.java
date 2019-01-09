@@ -28,13 +28,10 @@ public class StringUtils {
         if (indexFrom < 0 || indexTo < 0 || indexFrom > indexTo) {
             return null;
         }
-
         if (null != start) {
             indexFrom += start.length();
         }
-
         return src.substring(indexFrom, indexTo);
-
     }
 
     /**
