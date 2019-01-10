@@ -71,6 +71,17 @@ public class ValTransmitTest {
         map.put("test", list);
         list.add("delay");
         System.out.println(map);
+
+        //*************
+        Map<String, String> map1 = new HashMap<String, String>();
+        map1.put("test1", "test1");
+        map1.put("test2", "test2");
+        Map<String, String> map2 = new HashMap<String, String>();
+        map2 = map1;
+        map1.put("test3", "test3");
+        map2.put("test4", "test4");
+        System.out.println(map1);
+        System.out.println(map2.size());
     }
 
     public static List newNames(){
