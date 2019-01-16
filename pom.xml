@@ -35,6 +35,7 @@
         <guava.version>25.1-jre</guava.version>
         <lombok.version>1.16.18</lombok.version>
         <netty.version>4.1.30.Final</netty.version>
+        <rocketmq.version>4.1.0-incubating</rocketmq.version>
     </properties>
 
     <dependencyManagement>
@@ -95,6 +96,11 @@
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
                 <version>${netty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-client</artifactId>
+                <version>${rocketmq.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

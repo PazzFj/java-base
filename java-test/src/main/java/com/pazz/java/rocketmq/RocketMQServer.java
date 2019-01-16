@@ -16,7 +16,7 @@ public class RocketMQServer {
         //Instantiate with a producer group name.
         DefaultMQProducer producer = new DefaultMQProducer("please_rename_unique_group_name");
         // Specify name server addresses.
-        producer.setNamesrvAddr("47.101.167.134:9876");
+        producer.setNamesrvAddr("192.168.89.129:9876");
 //        producer.setVipChannelEnabled(false);
         //Launch the instance.
         producer.start();
