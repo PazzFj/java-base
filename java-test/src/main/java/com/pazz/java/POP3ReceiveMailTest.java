@@ -45,19 +45,21 @@ public class POP3ReceiveMailTest {
          * 因为现在使用的是163邮箱 而163的 pop地址是　pop3.163.com　 端口是　110　　
          * 比如使用好未来企业邮箱 就需要换成 好未来邮箱的 pop服务器地址 pop.263.net  和   端口 110
          */
-        String duankou = "110";// 端口号
+//        String duankou = "110";// 端口号
+        String duankou = "143";// 端口号
 //        String servicePath = "pop3.163.com";   // 服务器地址
-        String servicePath = "pop3.mxhichina.com";   // 服务器地址
+//        String servicePath = "pop3.mxhichina.com";   // 服务器地址
+        String servicePath = "imap.mxhichina.com";   // 服务器地址
 
         // 准备连接服务器的会话信息
         Properties props = new Properties();
-        props.setProperty("mail.store.protocol", "pop3");       // 使用pop3协议
-        props.setProperty("mail.pop3.port", duankou);           // 端口
-        props.setProperty("mail.pop3.host", servicePath);       // pop3服务器
+        props.setProperty("mail.store.protocol", "imap");       // 使用pop3协议
+        props.setProperty("mail.imap.port", duankou);           // 端口
+        props.setProperty("mail.imap.host", servicePath);       // pop3服务器
 
         // 创建Session实例对象
         Session session = Session.getInstance(props);
-        Store store = session.getStore("pop3");
+        Store store = session.getStore("imap");
         store.connect("bc@gangrong.pro", "Gr12345678"); //163邮箱程序登录属于第三方登录所以这里的密码是163给的授权密码而并非普通的登录密码
 
         // 获得收件箱
@@ -78,7 +80,8 @@ public class POP3ReceiveMailTest {
         System.out.println("邮件总数: " + folder.getMessageCount());
 
         // 得到收件箱中的所有邮件,并解析
-        Message[] messages = folder.getMessages();
+//        Message[] messages = folder.getMessages();
+        Message[] messages = folder.getMessages(folder.getMessageCount() - folder.getUnreadMessageCount() + 1, folder.getMessageCount());
         parseMessage(messages);
 
         //得到收件箱中的所有邮件并且删除邮件
@@ -371,13 +374,13 @@ public class POP3ReceiveMailTest {
                 String disp = bodyPart.getDisposition();
                 if (disp != null && (disp.equalsIgnoreCase(Part.ATTACHMENT) || disp.equalsIgnoreCase(Part.INLINE))) {
                     InputStream is = bodyPart.getInputStream();
-                    saveFile(is, destDir, decodeText(bodyPart.getFileName()));
+//                    saveFile(is, destDir, decodeText(bodyPart.getFileName()));
                 } else if (bodyPart.isMimeType("multipart/*")) {
                     saveAttachment(bodyPart, destDir);
                 } else {
                     String contentType = bodyPart.getContentType();
                     if (contentType.indexOf("name") != -1 || contentType.indexOf("application") != -1) {
-                        saveFile(bodyPart.getInputStream(), destDir, decodeText(bodyPart.getFileName()));
+//                        saveFile(bodyPart.getInputStream(), destDir, decodeText(bodyPart.getFileName()));
                     }
                 }
             }

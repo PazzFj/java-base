@@ -18,13 +18,13 @@ public class RocketMQServer {
         //Instantiate with a producer group name.
         DefaultMQProducer producer = new DefaultMQProducer("please_rename_unique_group_name");
         // Specify name server addresses.
-        producer.setNamesrvAddr("192.168.175.130:9876");
+        producer.setNamesrvAddr("192.168.89.129:9876");
 //        producer.setVipChannelEnabled(false);
         //Launch the instance.
         producer.start();
         for (int i = 0; i < 100; i++) {
             //Create a message instance, specifying topic, tag and message body.
-            Message msg = new Message("TopicTest", ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
+            Message msg = new Message("TopicTest", ("Example RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
             //Call send message to deliver message to one of brokers.
             SendResult sendResult = producer.send(msg);
             System.out.printf("%s%n", sendResult);
