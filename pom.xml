@@ -16,6 +16,7 @@
         <module>java-web</module>
         <module>java-source</module>
         <module>java-test</module>
+        <module>java-xml</module>
     </modules>
 
     <properties>
