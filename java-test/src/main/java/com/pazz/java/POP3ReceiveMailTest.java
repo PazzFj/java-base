@@ -374,13 +374,15 @@ public class POP3ReceiveMailTest {
                 String disp = bodyPart.getDisposition();
                 if (disp != null && (disp.equalsIgnoreCase(Part.ATTACHMENT) || disp.equalsIgnoreCase(Part.INLINE))) {
                     InputStream is = bodyPart.getInputStream();
-//                    saveFile(is, destDir, decodeText(bodyPart.getFileName()));
+                    saveFile(is, destDir, decodeText(bodyPart.getFileName()));
+                    ((Message) part).setFlag(Flags.Flag.SEEN, true);
                 } else if (bodyPart.isMimeType("multipart/*")) {
                     saveAttachment(bodyPart, destDir);
                 } else {
                     String contentType = bodyPart.getContentType();
                     if (contentType.indexOf("name") != -1 || contentType.indexOf("application") != -1) {
-//                        saveFile(bodyPart.getInputStream(), destDir, decodeText(bodyPart.getFileName()));
+                        saveFile(bodyPart.getInputStream(), destDir, decodeText(bodyPart.getFileName()));
+                        ((Message) part).setFlag(Flags.Flag.SEEN, true);
                     }
                 }
             }
@@ -401,8 +403,7 @@ public class POP3ReceiveMailTest {
     private static void saveFile(InputStream is, String destDir, String fileName)
             throws FileNotFoundException, IOException {
         BufferedInputStream bis = new BufferedInputStream(is);
-        BufferedOutputStream bos = new BufferedOutputStream(
-                new FileOutputStream(new File(destDir + fileName)));
+        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(destDir + fileName)));
         int len = -1;
         while ((len = bis.read()) != -1) {
             bos.write(len);
