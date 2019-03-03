@@ -82,6 +82,13 @@ public class ValTransmitTest {
         map2.put("test4", "test4");
         System.out.println(map1);
         System.out.println(map2.size());
+
+        //***********
+        TestA a = new TestA();
+        TestA b = a;
+        a = null;
+        System.out.println(a);
+        System.out.println(b);
     }
 
     public static List newNames(){
@@ -117,6 +124,10 @@ public class ValTransmitTest {
                     "name='" + name + '\'' +
                     '}';
         }
+    }
+
+    static class TestA{
+
     }
 
 }
