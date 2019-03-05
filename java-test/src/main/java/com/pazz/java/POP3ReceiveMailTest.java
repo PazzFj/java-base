@@ -1,5 +1,11 @@
 package com.pazz.java;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -9,8 +15,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 import javax.mail.Address;
 import javax.mail.BodyPart;
 import javax.mail.Flags;
@@ -34,7 +45,10 @@ import javax.mail.internet.MimeUtility;
 public class POP3ReceiveMailTest {
 
     public static void main(String[] args) throws Exception {
-        resceive();
+        StringBuffer eirId = new StringBuffer();
+        ThreadLocalRandom.current().ints(0, 10).distinct().limit(6).forEach(e -> { eirId.append(e); });
+        System.out.println(eirId);
+//        resceive();
     }
 
     /**
@@ -110,9 +124,9 @@ public class POP3ReceiveMailTest {
             System.out.println("收件人：" + getReceiveAddress(msg, null));
             System.out.println("发送时间：" + getSentDate(msg, null));
             System.out.println("是否已读：" + isSeen(msg));
-            System.out.println("邮件优先级：" + getPriority(msg));
-            System.out.println("是否需要回执：" + isReplySign(msg));
-            System.out.println("邮件大小：" + msg.getSize() * 1024 + "kb");
+//            System.out.println("邮件优先级：" + getPriority(msg));
+//            System.out.println("是否需要回执：" + isReplySign(msg));
+//            System.out.println("邮件大小：" + msg.getSize() * 1024 + "kb");
             boolean isContainerAttachment = isContainAttachment(msg);
             System.out.println("是否包含附件：" + isContainerAttachment);
             if (isContainerAttachment) {
@@ -374,14 +388,22 @@ public class POP3ReceiveMailTest {
                 String disp = bodyPart.getDisposition();
                 if (disp != null && (disp.equalsIgnoreCase(Part.ATTACHMENT) || disp.equalsIgnoreCase(Part.INLINE))) {
                     InputStream is = bodyPart.getInputStream();
-                    saveFile(is, destDir, decodeText(bodyPart.getFileName()));
+                    try{
+                        saveFile(is, destDir, decodeText(bodyPart.getFileName()));
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                     ((Message) part).setFlag(Flags.Flag.SEEN, true);
                 } else if (bodyPart.isMimeType("multipart/*")) {
                     saveAttachment(bodyPart, destDir);
                 } else {
                     String contentType = bodyPart.getContentType();
                     if (contentType.indexOf("name") != -1 || contentType.indexOf("application") != -1) {
-                        saveFile(bodyPart.getInputStream(), destDir, decodeText(bodyPart.getFileName()));
+                        try{
+                            saveFile(bodyPart.getInputStream(), destDir, decodeText(bodyPart.getFileName()));
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
                         ((Message) part).setFlag(Flags.Flag.SEEN, true);
                     }
                 }
@@ -391,6 +413,27 @@ public class POP3ReceiveMailTest {
         }
     }
 
+//    /**
+//     * 读取输入流中的数据保存至指定目录
+//     *
+//     * @param is       输入流
+//     * @param fileName 文件名
+//     * @param destDir  文件存储目录
+//     * @throws FileNotFoundException
+//     * @throws IOException
+//     */
+//    private static void saveFile(InputStream is, String destDir, String fileName)
+//            throws FileNotFoundException, IOException {
+//        BufferedInputStream bis = new BufferedInputStream(is);
+//        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(destDir + fileName)));
+//        int len = -1;
+//        while ((len = bis.read()) != -1) {
+//            bos.write(len);
+//            bos.flush();
+//        }
+//        bos.close();
+//        bis.close();
+//    }
     /**
      * 读取输入流中的数据保存至指定目录
      *
@@ -401,16 +444,18 @@ public class POP3ReceiveMailTest {
      * @throws IOException
      */
     private static void saveFile(InputStream is, String destDir, String fileName)
-            throws FileNotFoundException, IOException {
-        BufferedInputStream bis = new BufferedInputStream(is);
-        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(destDir + fileName)));
-        int len = -1;
-        while ((len = bis.read()) != -1) {
-            bos.write(len);
-            bos.flush();
+            throws Exception {
+        Workbook workbook = WorkbookFactory.create(is);
+        Sheet sheet = workbook.getSheetAt(0);
+        List<DcbContainerExcelDto> dtos = new ArrayList<>();
+        int rowNum = sheet.getPhysicalNumberOfRows();
+        for (int i = 1; i < rowNum; i++) {// 从第2行开始读信息
+            Row row = sheet.getRow(i);
+            DcbContainerExcelDto uploadDto = new DcbContainerExcelDto();
+            uploadDto.setBlNo(row.getCell(0).getStringCellValue());
+            dtos.add(uploadDto);
         }
-        bos.close();
-        bis.close();
+        System.out.println(dtos);
     }
 
     /**

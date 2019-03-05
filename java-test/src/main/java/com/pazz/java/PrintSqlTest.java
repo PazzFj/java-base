@@ -5,7 +5,7 @@ package com.pazz.java;
  * @create: 2019/2/18 15:21
  * @description:
  */
-public class MainTest {
+public class PrintSqlTest {
 
     public static void main(String[] args) {
         String str = "#N/A," +
@@ -1335,10 +1335,12 @@ public class MainTest {
         String[] strs = str.split(",");
         int index = 30;
         for (int i = 0; i < strs.length; i++) {
-            System.out.println("INSERT INTO BASIC_DATA(TYPE,ID,CREATED_BY,CREATION_TIME,LAST_UPDATE_TIME,UPDATED_BY,VERSION,SEQ,TEU)VALUES('ContainerSizeType','" + strs[i] + "','ADMIN',now(),now(),'ADMIN',0," + (index + i) + ",null);");
-            System.out.println("INSERT INTO BASIC_DATA_NAME(CREATED_BY,CREATION_TIME,LAST_UPDATE_TIME,UPDATED_BY,VERSION,NAME,DATA_ID,LANG_ID)VALUES('ADMIN',now(), now(),'ADMIN',0,'"+strs[i]+"','"+strs[i]+"','zh_CN');");
-            System.out.println("INSERT INTO BASIC_DATA_NAME(CREATED_BY,CREATION_TIME,LAST_UPDATE_TIME,UPDATED_BY,VERSION,NAME,DATA_ID,LANG_ID)VALUES('ADMIN',now(), now(),'ADMIN',0,'"+strs[i]+"','"+strs[i]+"','en_US');");
-            System.out.println();
+            if(strs[i].length() == 4){
+                System.out.println("INSERT INTO BASIC_DATA(TYPE,ID,CREATED_BY,CREATION_TIME,LAST_UPDATE_TIME,UPDATED_BY,VERSION,SEQ,TEU)VALUES('ContainerSizeType','" + strs[i] + "','ADMIN',now(),now(),'ADMIN',0," + (index + i) + ",null);");
+                System.out.println("INSERT INTO BASIC_DATA_NAME(CREATED_BY,CREATION_TIME,LAST_UPDATE_TIME,UPDATED_BY,VERSION,NAME,DATA_ID,LANG_ID)VALUES('ADMIN',now(), now(),'ADMIN',0,'"+strs[i]+"','"+strs[i]+"','zh_CN');");
+                System.out.println("INSERT INTO BASIC_DATA_NAME(CREATED_BY,CREATION_TIME,LAST_UPDATE_TIME,UPDATED_BY,VERSION,NAME,DATA_ID,LANG_ID)VALUES('ADMIN',now(), now(),'ADMIN',0,'"+strs[i]+"','"+strs[i]+"','en_US');");
+                System.out.println();
+            }
         }
 
         System.out.println(strs.length);

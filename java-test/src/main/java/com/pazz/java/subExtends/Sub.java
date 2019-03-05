@@ -1,4 +1,4 @@
-package com.pazz.java.subExt;
+package com.pazz.java.subExtends;
 
 /**
  * @author: 彭坚
