@@ -21,7 +21,20 @@ import java.util.Properties;
 public class POP3SendMailTest {
 
     public static void main(String[] args) throws Exception {
-        send();
+        new Thread(() -> {
+            try {
+                send();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+        new Thread(() -> {
+            try {
+                POP3ReceiveMailTest.resceive();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     public static void send() throws Exception {
@@ -30,7 +43,7 @@ public class POP3SendMailTest {
         props.setProperty("mail.smtp.host", "smtp.mxhichina.com");// 服务器地址
         props.setProperty("mail.smtp.port", "25");// 端口号
         props.setProperty("mail.smtp.auth", "true");
-        props.setProperty("mail.smtp.timeout", "2000");
+//        props.setProperty("mail.smtp.timeout", "2000");
 
         //使用JavaMail发送邮件的5个步骤
         //1、创建session
@@ -54,20 +67,20 @@ public class POP3SendMailTest {
         //指明邮件的收件人，现在发件人和收件人是一样的，那就是自己给自己发
         message.setRecipient(Message.RecipientType.TO, new InternetAddress("bc@gangrong.pro"));
         //邮件的标题
-        message.setSubject("邮件发送测试");
+        message.setSubject("报文邮件测试");
         //创建邮件正文，为了避免邮件正文中文乱码问题，需要使用charset=UTF-8指明字符编码
         MimeBodyPart text = new MimeBodyPart();
-        text.setContent("创建的带附件的邮件", "text/html;charset=UTF-8");
+        text.setContent("http:// 发送邮件报文测试", "text/html;charset=UTF-8");
         //创建邮件附件1
-        MimeBodyPart attach = new MimeBodyPart();
-        DataHandler dh = new DataHandler(new FileDataSource("F:\\images\\123.png"));
-        attach.setDataHandler(dh);
-        attach.setFileName(dh.getName());
+//        MimeBodyPart attach = new MimeBodyPart();
+//        DataHandler dh = new DataHandler(new FileDataSource("F:\\images\\123.png"));
+//        attach.setDataHandler(dh);
+//        attach.setFileName(dh.getName());
 
         //创建容器描述数据关系
         MimeMultipart mp = new MimeMultipart();
         mp.addBodyPart(text);
-        mp.addBodyPart(attach);
+//        mp.addBodyPart(attach);
         mp.setSubType("mixed");
 
         //邮件的文本内容

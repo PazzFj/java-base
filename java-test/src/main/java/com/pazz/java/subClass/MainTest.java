@@ -8,10 +8,13 @@ package com.pazz.java.subClass;
 public class MainTest {
 
     public static void main(String[] args) {
-        ParentClass parentClass = new ParentClass();
-        SubClass subClass = new SubClass();
+//        ParentClass parentClass = new ParentClass();
+//        SubClass subClass = new SubClass();
+//
+//        System.out.println(parentClass.getClass().isInstance(subClass));
 
-        System.out.println(parentClass.getClass().isInstance(subClass));
+        One one = new One();
+        one.test();
     }
 
 }
