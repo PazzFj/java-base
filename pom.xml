@@ -17,6 +17,9 @@
         <module>java-source</module>
         <module>java-test</module>
         <module>java-xml</module>
+        <module>java-proxy</module>
+        <module>java-reflect</module>
+        <module>java-network</module>
     </modules>
 
     <properties>
