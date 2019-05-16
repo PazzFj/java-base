@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
  */
 public class TestReflect {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Class clazz = SubCls.class;
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
@@ -21,6 +21,16 @@ public class TestReflect {
         for (Method method : methods) {
             System.out.println(method.getName());
         }
+
+        TestReflect reflect = new TestReflect();
+        Method method = reflect.getClass().getDeclaredMethod("methodA", String.class);
+        Object result = method.invoke(reflect, "test");
+        System.out.println("result: " + result);
+    }
+
+    private String methodA(String str){
+        System.out.println("method:" + str);
+        return str;
     }
 
 }
