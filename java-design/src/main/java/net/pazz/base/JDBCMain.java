@@ -39,9 +39,9 @@ public class JDBCMain {
             if (str.length() <= 1) {
                 continue;
             }
-            String sql = "insert into org_info(org_code, org_name)values('" + str.substring(0, str.indexOf(" ")) + "', '" + str.substring(str.indexOf(" ") + 1) + "')";
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.execute();
+            String sql = "insert into org_info(org_code, org_name)values('" + str.substring(0, str.indexOf(" ")) + "', '" + str.substring(str.indexOf(" ") + 1) + "');";
+//            preparedStatement = connection.prepareStatement(sql);
+//            preparedStatement.execute();
             bw.write(sql);
             bw.newLine();
         }
