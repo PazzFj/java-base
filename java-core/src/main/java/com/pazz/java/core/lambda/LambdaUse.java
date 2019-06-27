@@ -21,19 +21,20 @@ public class LambdaUse {
 
     public static void main(String[] args) throws Exception {
         List<Property> properties = newLists();
+        List<String> strs = properties.stream().map(p -> p.getVal()).collect(Collectors.toList());
 
-        Optional<Property> max = properties.stream().max(Comparator.comparing(Property::getTime));  // 获取时间最大的对象
-        Optional<Property> min = properties.stream().min(Comparator.comparing(Property::getTime));  // 获取时间最小的对象
-        int counts = properties.stream().mapToInt(Property::getCount).sum();        //获取集合某个字段和(int类型)
-        Map<String, List<Property>> listMap = properties.stream().collect(Collectors.groupingBy(Property::getVal));     //根据某个字段分组
-        List<Property> filter = properties.stream().filter(p -> p.val.equals("v")).collect(Collectors.toList());  // 过滤(true)
-
-        System.out.println("group: " + listMap);
-        System.out.println("sum: " + counts);
-        System.out.println("max: " + max);
-        System.out.println("min: " + min);
-        System.out.println("filter: " + filter);
-        properties.stream().peek(p -> System.out.print(p));       // peek 遍历
+//        Optional<Property> max = properties.stream().max(Comparator.comparing(Property::getTime));  // 获取时间最大的对象
+//        Optional<Property> min = properties.stream().min(Comparator.comparing(Property::getTime));  // 获取时间最小的对象
+//        int counts = properties.stream().mapToInt(Property::getCount).sum();        //获取集合某个字段和(int类型)
+//        Map<String, List<Property>> listMap = properties.stream().collect(Collectors.groupingBy(Property::getVal));     //根据某个字段分组
+//        List<Property> filter = properties.stream().filter(p -> p.val.equals("v")).collect(Collectors.toList());  // 过滤(true)
+//
+//        System.out.println("group: " + listMap);
+//        System.out.println("sum: " + counts);
+//        System.out.println("max: " + max);
+//        System.out.println("min: " + min);
+//        System.out.println("filter: " + filter);
+//        properties.stream().peek(p -> System.out.print(p));       // peek 遍历
     }
 
     public static List<Property> newLists() {
