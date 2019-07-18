@@ -1,11 +1,14 @@
 package com.pazz.java.core.lambda;
 
+import lombok.Data;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -17,100 +20,69 @@ import java.util.stream.Collectors;
 public class LambdaUse {
 
     public static void main(String[] args) throws Exception {
+        List<Property> properties = newLists();
+        List<String> strs = properties.stream().map(p -> p.getVal()).collect(Collectors.toList());
 
-
-        List<Property> properties = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            if(i % 2 == 0){
-                properties.add(new Property(new Date(), true, "v" + i, i));
-            }else{
-                properties.add(new Property(new Date(), false, "v", i));
-            }
-            Thread.sleep(1000);
-        }
-
-        properties.stream().forEach(property -> {
-            System.out.println(property);
-        });
-
-        Optional<Property> max = properties.stream().max(Comparator.comparing(Property::getTime));  // 获取时间最大的对象
-        Optional<Property> min = properties.stream().min(Comparator.comparing(Property::getTime));  // 获取时间最小的对象
-        System.out.println();
-
-        System.out.println(max);
-        System.out.println(min);
-
-        List<Property> filters1 = properties.stream().filter(Property::isFilter).collect(Collectors.toList());          // 过滤为true的数据
-        List<Property> filters2 = properties.stream().filter(p -> p.getVal().equals("v")).collect(Collectors.toList()); // 过滤为true的数据
-        System.out.println(filters1);
-        System.out.println(filters2);
-
-        List<Property> filters3 = properties.stream().map(p -> cast(p)).peek(p -> System.out.println(p.getVal())).collect(Collectors.toList());       // map
-        System.out.println(filters3);
+//        Optional<Property> max = properties.stream().max(Comparator.comparing(Property::getTime));  // 获取时间最大的对象
+//        Optional<Property> min = properties.stream().min(Comparator.comparing(Property::getTime));  // 获取时间最小的对象
+//        int counts = properties.stream().mapToInt(Property::getCount).sum();        //获取集合某个字段和(int类型)
+//        Map<String, List<Property>> listMap = properties.stream().collect(Collectors.groupingBy(Property::getVal));     //根据某个字段分组
+//        List<Property> filter = properties.stream().filter(p -> p.val.equals("v")).collect(Collectors.toList());  // 过滤(true)
+//
+//        System.out.println("group: " + listMap);
+//        System.out.println("sum: " + counts);
+//        System.out.println("max: " + max);
+//        System.out.println("min: " + min);
+//        System.out.println("filter: " + filter);
+//        properties.stream().peek(p -> System.out.print(p));       // peek 遍历
     }
 
-    private static Property cast(Property property){
-        property.setIndex(2);
+    public static List<Property> newLists() {
+        List<Property> properties = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            if (i % 2 == 0) {
+                properties.add(new Property(new Date(), "v" + i, i * 2));
+            } else {
+                properties.add(new Property(new Date(), "v", i * 3));
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return properties;
+    }
+
+    private static Property cast(Property property) {
+        property.setCount(10);
+        property.setVal("update");
+        property.setTime(null);
         return property;
     }
 
+    @Data
     private static class Property {
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-        private Date time;
-        private boolean filter;
+        private final static DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        private Date time;  //日期
         private String val;
-        private int index;
+        private int count;
 
         public Property() {
         }
 
-        public Property(Date time, boolean filter, String val, int index) {
+        public Property(Date time, String val, int count) {
             this.time = time;
-            this.filter = filter;
             this.val = val;
-            this.index = index;
-        }
-
-        public Date getTime() {
-            return time;
-        }
-
-        public void setTime(Date time) {
-            this.time = time;
-        }
-
-        public boolean isFilter() {
-            return filter;
-        }
-
-        public void setFilter(boolean filter) {
-            this.filter = filter;
-        }
-
-        public String getVal() {
-            return val;
-        }
-
-        public void setVal(String val) {
-            this.val = val;
-        }
-
-        public int getIndex() {
-            return index;
-        }
-
-        public void setIndex(int index) {
-            this.index = index;
+            this.count = count;
         }
 
         @Override
         public String toString() {
-            return "Property{" +
-                    "time=" + format.format(time) +
-                    ", filter=" + filter +
+            return "P{" +
+                    "time=" + time +
                     ", val='" + val + '\'' +
-                    ", index=" + index +
+                    ", count=" + count +
                     '}';
         }
     }

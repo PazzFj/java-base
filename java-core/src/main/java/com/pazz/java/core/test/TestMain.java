@@ -1,5 +1,6 @@
 package com.pazz.java.core.test;
 
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,11 +12,13 @@ import java.util.regex.Pattern;
 public class TestMain {
 
     public static void main(String[] args) {
-        String str1 = "[0-9]";
-        String str2 = "[a-z]";
-        Pattern pattern = Pattern.compile(str2);
-        Matcher matcher = pattern.matcher("a");
-        System.out.println(matcher.matches());
+//        String str1 = "[0-9]";
+//        String str2 = "[a-z]";
+//        Pattern pattern = Pattern.compile(str2);
+//        Matcher matcher = pattern.matcher("a");
+//        System.out.println(matcher.matches());
+        String str = String.valueOf(System.currentTimeMillis());
+        System.out.println(str.substring(str.length()-4, str.length()));
     }
 
 }

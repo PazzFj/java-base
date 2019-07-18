@@ -21,7 +21,7 @@ public class JDBCHelp {
 
     public static Connection getConnection(){
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/base", "root", "sa123");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://39.106.216.100:3306/eshipping_truck", "yht", "AD9KSivrniiYFAO2W5OI");
             return connection;
         } catch (SQLException e) {
             e.printStackTrace();

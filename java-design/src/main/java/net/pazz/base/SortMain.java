@@ -7,7 +7,7 @@ import java.util.List;
 public class SortMain {
 
     public static void main(String[] args) {
-        int [] t = new int[]{1, 98, 5, 53, 154, 48, 8, 7, 99, 66};
+//        int [] t = new int[]{1, 98, 5, 53, 154, 48, 8, 7, 99, 66};
 
 //        // 空集合
 //        int [] base = new int[10];
@@ -18,9 +18,12 @@ public class SortMain {
 //
 //        System.out.println(str[1]);
 
-        List<String> list = Arrays.asList("peter", "anna", "mike", "xenia", "aab", "ccc");
-        Collections.sort(list); //排序
-        System.out.println(list);
+//        List<String> list = Arrays.asList("peter", "anna", "mike", "xenia", "aab", "ccc");
+//        Collections.sort(list); //排序
+//        System.out.println(list);
+
+        String s = new String("1中国湖南省");
+        System.out.println(s.startsWith("中国")?s.substring(2) : s);
     }
 
 }

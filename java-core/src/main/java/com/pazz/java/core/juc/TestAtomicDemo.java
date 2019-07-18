@@ -35,7 +35,7 @@ public class TestAtomicDemo {
 
         //private volatile int serialNumber = 0;
 
-        private AtomicInteger serialNumber = new AtomicInteger(0);
+        private AtomicInteger serialNumber = new AtomicInteger();
 
         @Override
         public void run() {
