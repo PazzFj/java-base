@@ -20,7 +20,7 @@ public class RocketMQClient {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("please_rename_unique_group_name");
 
         // Specify name server addresses.
-        consumer.setNamesrvAddr("192.168.89.130:9876");
+        consumer.setNamesrvAddr("192.168.175.130:9876");
 
         // Subscribe one more more topics to consume.
         consumer.subscribe("TopicTest", "*");
