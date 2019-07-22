@@ -9,17 +9,7 @@
     <packaging>pom</packaging>
     <version>1.0.0</version>
     <modules>
-        <module>java-design</module>
         <module>java-collection</module>
-        <module>java-database</module>
-        <module>java-core</module>
-        <module>java-web</module>
-        <module>java-source</module>
-        <module>java-test</module>
-        <module>java-xml</module>
-        <module>java-proxy</module>
-        <module>java-reflect</module>
-        <module>java-network</module>
     </modules>
 
     <properties>
