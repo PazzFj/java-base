@@ -13,14 +13,21 @@ import java.util.Date;
 public class LongType {
 
     public static void main(String[] args) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(new Date());
-        cal.add(Calendar.DAY_OF_MONTH, -7);
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.HOUR_OF_DAY, 0);
-        System.out.println();
-
-        System.out.println(DateUtils.convert(cal.getTime(), "yyyy-MM-dd HH:mm:ss"));
+        System.out.println(14 ^ 27);
+        System.out.println(27 ^ 14);
+        System.out.println(14 << 2);
+        System.out.println(14 >> 2);
+        System.out.println(14 >>> 2);
+        System.out.println(27 >>> 2);
+        System.out.println(27 >>> 3);
+//        Calendar cal = Calendar.getInstance();
+//        cal.setTime(new Date());
+//        cal.add(Calendar.DAY_OF_MONTH, -7);
+//        cal.set(Calendar.SECOND, 0);
+//        cal.set(Calendar.MINUTE, 0);
+//        cal.set(Calendar.HOUR_OF_DAY, 0);
+//        System.out.println();
+//
+//        System.out.println(DateUtils.convert(cal.getTime(), "yyyy-MM-dd HH:mm:ss"));
     }
 }

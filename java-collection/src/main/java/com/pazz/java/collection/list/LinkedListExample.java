@@ -3,7 +3,7 @@ package com.pazz.java.collection.list;
 /**
  * @author: Peng Jian
  * @create: 2018/10/29 17:09
- * @description:
+ * @description: 手写 LinkedList
  */
 public class LinkedListExample<E> {
 
@@ -55,6 +55,9 @@ public class LinkedListExample<E> {
     }
 
 
+    /**
+     * 添加到头部
+     */
     void linkLast(E element) {
         final NodeExample l = last;
         final NodeExample newNode = new NodeExample(l, element, null);

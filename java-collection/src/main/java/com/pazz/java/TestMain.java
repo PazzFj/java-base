@@ -1,4 +1,4 @@
-package com.pazz.java.core.datatype;
+package com.pazz.java;
 
 /**
  * @author: 彭坚
@@ -8,13 +8,13 @@ package com.pazz.java.core.datatype;
 public class TestMain {
 
     public static void main(String[] args) {
-        ETest test = new ETest();
+        TestValue test = new TestValue();
         System.out.println("如果在这里设置断点，则输出1");
         System.out.println(test.getValue());
         System.out.println("如果不设置断点，则输出0");
     }
 
-    static class ETest{
+    static class TestValue {
         private volatile int value = 0;
 
         public int getValue() {
@@ -24,7 +24,7 @@ public class TestMain {
         public int setValue() {
             if (value == 0) {
                 synchronized (this) {
-                    if(value == 0){
+                    if (value == 0) {
                         value = 1;
                     }
                 }

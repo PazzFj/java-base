@@ -1,4 +1,4 @@
-package com.pazz.java.core.io;
+package com.pazz.java.nio;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

@@ -1,4 +1,4 @@
-package com.pazz.java.core.io;
+package com.pazz.java.nio;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;

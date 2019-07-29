@@ -1,4 +1,4 @@
-package com.pazz.java.core.io;
+package com.pazz.java.nio;
 
 import org.junit.Test;
 
@@ -39,10 +39,12 @@ public class BlockingNIO {
         SocketChannel open2 = SocketChannel.open(new InetSocketAddress("127.0.0.1", 9988));
         //读取本地文件，并发送到服务端
         while (open.read(buffer) != -1) {
+            // 从buffer弹出数据
             buffer.flip();
             open2.write(buffer);
             buffer.clear();
         }
+        // 在不关闭通道的情况下，关闭用于写入的连接
         open2.shutdownOutput();
         //获取服务端反馈
         int len = 0;
