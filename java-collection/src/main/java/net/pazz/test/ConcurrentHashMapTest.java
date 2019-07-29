@@ -34,7 +34,7 @@ public class ConcurrentHashMapTest {
     private static Object[] table;
     private static int sizeCtl;
     private static final int DEFAULT_CAPACITY = 16;
-    private static final sun.misc.Unsafe U = sun.misc.Unsafe.getUnsafe();
+//    private static final sun.misc.Unsafe U = sun.misc.Unsafe.getUnsafe();
     private static final long SIZECTL = 111;
 
 
@@ -44,7 +44,7 @@ public class ConcurrentHashMapTest {
         while ((tab = table) == null || tab.length == 0) {
             if ((sc = sizeCtl) < 0)
                 Thread.yield(); // lost initialization race; just spin
-            else if (U.compareAndSwapInt(this, SIZECTL, sc, -1)) {
+            /*else if (U.compareAndSwapInt(this, SIZECTL, sc, -1)) {
                 try {
                     if ((tab = table) == null || tab.length == 0){
                         int n = (sc > 0) ? sc : DEFAULT_CAPACITY;
@@ -56,7 +56,7 @@ public class ConcurrentHashMapTest {
                     sizeCtl = sc;
                 }
                 break;
-            }
+            }*/
         }
         return tab;
     }

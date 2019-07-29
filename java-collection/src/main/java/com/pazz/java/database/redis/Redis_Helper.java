@@ -54,7 +54,7 @@ public class Redis_Helper {
                 jedis = getPool(ip, port).getResource();
             } catch (Exception e) {
                 logger.info("get redis master1 failed!");
-                getPool(ip, port).returnBrokenResource(jedis);
+//                getPool(ip, port).returnBrokenResource(jedis);
             }
         }
         while (jedis == null && count < RedisConfig.RETRY_NUM);
@@ -63,7 +63,9 @@ public class Redis_Helper {
 
     public void closeJedis(Jedis jedis, String ip, int port) {
         if (jedis != null) {
-            getPool(ip, port).returnResource(jedis);
+            jedis.close();
+            getPool(ip, port).close();
+//            getPool(ip, port).returnResource(jedis);
         }
     }
 

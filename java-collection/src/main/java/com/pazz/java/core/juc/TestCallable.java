@@ -17,7 +17,9 @@ public class TestCallable {
      * 二、执行 Callable 方式，需要 FutureTask 实现类的支持，用于接收运算结果。  FutureTask 是  Future 接口的实现类
      */
     public static void main(String[] args) throws ExecutionException, InterruptedException {
+        @SuppressWarnings("unchecked")
         ThreadDemo td = new ThreadDemo();
+        @SuppressWarnings("unchecked")
         FutureTask<Integer> future = new FutureTask(td);
 
         new Thread(future).start();
