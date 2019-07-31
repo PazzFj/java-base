@@ -1,5 +1,7 @@
 package com.pazz.java.design;
 
+import com.pazz.java.design.abstractFactory.AbstractFactory;
+import com.pazz.java.design.abstractFactory.FactoryProducer;
 import com.pazz.java.design.adapter.Adapter;
 import com.pazz.java.design.adapter.Target;
 import com.pazz.java.design.builder.BikeBuilder;
@@ -34,6 +36,8 @@ import com.pazz.java.design.template.AbstractTemplate;
 import com.pazz.java.design.template.TemplateTest;
 import com.pazz.java.design.proxy.Singer;
 import com.pazz.java.design.proxy.SingerStaticProxy;
+import com.pazz.java.design.visitor.ComputerPartDisplayVisitor;
+import com.pazz.java.design.visitor.part.Computer;
 
 import java.io.File;
 import java.lang.reflect.Proxy;
@@ -50,6 +54,19 @@ import java.util.List;
  */
 public class DesignAppTest {
     public static void main(String[] args) throws Exception {
+
+        //获取形状工厂
+        AbstractFactory<Shape> shapeFactory = FactoryProducer.getFactory("SHAPE");
+        //获取形状为 Circle 的对象
+        Shape shape1 = shapeFactory.get("CIRCLE");
+        //调用 Circle 的 draw 方法
+        shape1.draw();
+
+        // 适配器模式
+        Computer computer = new Computer();
+        computer.accept(new ComputerPartDisplayVisitor());
+
+
         //delegate 委派模式=代理模式
         Delegate delegate = new ExectorA();
         ExectorManager exectorManager = new ExectorManager(delegate);

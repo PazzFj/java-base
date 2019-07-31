@@ -1,7 +1,7 @@
 package net.pazz.design;
 
-import net.pazz.design.visitor.ComputerPartDisplayVisitor;
-import net.pazz.design.visitor.part.Computer;
+import com.pazz.java.design.visitor.ComputerPartDisplayVisitor;
+import com.pazz.java.design.visitor.part.Computer;
 
 /**
  * @author pazz

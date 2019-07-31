@@ -15,7 +15,7 @@ import net.pazz.design.proxy.ProxyImage;
  * 使用场景：按职责来划分，通常有以下使用场景：
  * 1、远程代理。
  * 2、虚拟代理。
- * 3、ReflectionUtils-on-Write 代理。
+ * 3、ReflectionUtil-on-Write 代理。
  * 4、保护（Protect or Access）代理。
  * 5、Cache代理。
  * 6、防火墙（Firewall）代理。

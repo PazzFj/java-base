@@ -1,9 +1,9 @@
 package net.pazz.design;
 
-import net.pazz.design.abstractFactory.AbstractFactory;
-import net.pazz.design.abstractFactory.FactoryProducer;
-import net.pazz.design.abstractFactory.color.Color;
-import net.pazz.design.abstractFactory.shape.Shape;
+import com.pazz.java.design.abstractFactory.AbstractFactory;
+import com.pazz.java.design.abstractFactory.FactoryProducer;
+import com.pazz.java.design.abstractFactory.color.Color;
+import com.pazz.java.design.abstractFactory.shape.Shape;
 
 /**
 * @description: 抽象工厂模式
