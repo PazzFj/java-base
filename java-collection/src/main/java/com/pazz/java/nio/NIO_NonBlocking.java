@@ -17,7 +17,7 @@ import java.util.Scanner;
  * @create: 2018/12/16 23:32
  * @description:
  */
-public class NonBlockingNIO {
+public class NIO_NonBlocking {
 
     //非阻塞式的
     @Test

@@ -1,13 +1,27 @@
 package com.pazz.java.nio;
 
+import io.netty.bootstrap.Bootstrap;
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
+
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Date;
 
 /**
  * @author: 彭坚
@@ -52,7 +66,11 @@ public class TestChannel {
      * 编码：字符串 -> 字节数组
      * 解码：字节数组  -> 字符串
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
+
+//        client();
+//        server();
+
         FileChannel inChannel = FileChannel.open(Paths.get("f:/img/jay.jpg"), StandardOpenOption.READ);
         FileChannel outChannel = FileChannel.open(Paths.get("f:/img/jaycopy.jpg"), StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
         MappedByteBuffer inMappedBuf =  inChannel.map(FileChannel.MapMode.READ_ONLY, 0, inChannel.size());
@@ -82,6 +100,43 @@ public class TestChannel {
         Charset charset = Charset.forName("utf-8");
         System.out.println(charset.newEncoder());
 
+    }
+
+    public static void client() throws Exception {
+        Bootstrap bootstrap = new Bootstrap();
+        Channel channel = bootstrap.group(new NioEventLoopGroup())
+                .channel(NioSocketChannel.class)
+                .handler(new ChannelInitializer() {
+                    protected void initChannel(Channel ch) {
+                        ch.pipeline().addLast(new StringEncoder());
+                    }
+                })
+                .connect("127.0.0.1", 8000)
+                .channel();
+
+        while (true) {
+            channel.writeAndFlush(new Date() + ": two");
+            Thread.sleep(2000);
+        }
+    }
+
+    public static void server() throws Exception{
+        ServerBootstrap serverBootstrap = new ServerBootstrap();
+        serverBootstrap.group(new NioEventLoopGroup())
+                .channel(NioServerSocketChannel.class)
+                .localAddress(new InetSocketAddress(8000))
+                .childHandler(new ChannelInitializer() {
+                    @Override
+                    protected void initChannel(Channel ch) throws Exception {
+                        ch.pipeline().addLast(new StringDecoder(), new SimpleChannelInboundHandler<Object>() {
+                            @Override
+                            protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+                                System.out.println(msg);
+                            }
+                        });
+                    }
+                })
+                .bind();
     }
 
 }

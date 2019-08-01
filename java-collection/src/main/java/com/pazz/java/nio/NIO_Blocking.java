@@ -2,8 +2,7 @@ package com.pazz.java.nio;
 
 import org.junit.Test;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
@@ -15,24 +14,34 @@ import java.nio.file.StandardOpenOption;
 /**
  * @author: 彭坚
  * @create: 2018/12/15 22:57
- * @description: NIO 阻塞式与非阻塞式网络通信     non blocking NIO
+ * @description: NIO 网络通信
  */
-public class BlockingNIO {
+public class NIO_Blocking {
 
-    @Test
-    public void test() throws Exception {
-//        Path var3 = Paths.get("f:/img/jay2.jpg"); //创建目录
+    public static void main(String[] args) throws Exception {
+        BufferedInputStream bis = new BufferedInputStream(new FileInputStream("f:/images-wallpaper/timg.jpg"));
+        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("f:/images-wallpaper/timg-copy.jpg"));
+        byte[] b = new byte[1024];
+        while (bis.read(b) != -1) {
+            bos.write(b);
+        }
+        System.out.println("复制完成...");
+        bos.close();
+        bis.close();
+
+//        Path var3 = Paths.get("f:/images-wallpaper/black.jpg"); //创建目录
 //        Files.createDirectories(var3);
-//        System.out.println(var3);
 //        byte[] bytes = new byte[1024];
 //        Files.write(var3, bytes);
+
+        RandomAccessFile raf = new RandomAccessFile("E://file/context.txt", "rw");
     }
 
     //阻塞式的
     @Test
     public void client() throws IOException {
         //创建通道
-        FileChannel open = FileChannel.open(Paths.get("f:/img/jay.jpg"), StandardOpenOption.READ);
+        FileChannel open = FileChannel.open(Paths.get("f:/images-wallpaper/tx.png"), StandardOpenOption.READ);
         //分配缓冲区
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         //创建socket通道
@@ -61,7 +70,7 @@ public class BlockingNIO {
     @Test
     public void server() throws IOException {
         // 获取通道
-        FileChannel open = FileChannel.open(Paths.get("f:/img/jaycopy.jpg"), StandardOpenOption.WRITE, StandardOpenOption.CREATE);
+        FileChannel open = FileChannel.open(Paths.get("f:/images-wallpaper/tx-copy.png"), StandardOpenOption.WRITE, StandardOpenOption.CREATE);
         ServerSocketChannel open2 = ServerSocketChannel.open();
         //分配指定大小的缓冲区
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
