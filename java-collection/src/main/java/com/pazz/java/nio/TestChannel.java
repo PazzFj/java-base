@@ -71,8 +71,8 @@ public class TestChannel {
 //        client();
 //        server();
 
-        FileChannel inChannel = FileChannel.open(Paths.get("f:/img/jay.jpg"), StandardOpenOption.READ);
-        FileChannel outChannel = FileChannel.open(Paths.get("f:/img/jaycopy.jpg"), StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
+        FileChannel inChannel = FileChannel.open(Paths.get("f:/images-wallpaper/tx.png"), StandardOpenOption.READ);
+        FileChannel outChannel = FileChannel.open(Paths.get("f:/images-wallpaper/tx-copy.png"), StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
         MappedByteBuffer inMappedBuf =  inChannel.map(FileChannel.MapMode.READ_ONLY, 0, inChannel.size());
         MappedByteBuffer outMappedBuf =  outChannel.map(FileChannel.MapMode.READ_WRITE, 0, inChannel.size());
 
@@ -83,7 +83,7 @@ public class TestChannel {
         outChannel.close();
 
         System.out.println("-----------------------------------------------");
-        RandomAccessFile randomAccessFile = new RandomAccessFile("f:/test.txt", "rw");
+        RandomAccessFile randomAccessFile = new RandomAccessFile("f:/ctrl.txt", "rw");
         //得到通道
         FileChannel channel = randomAccessFile.getChannel();
         ByteBuffer buffer1 = ByteBuffer.allocate(1024);

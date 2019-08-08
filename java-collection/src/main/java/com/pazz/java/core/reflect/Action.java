@@ -7,6 +7,6 @@ package com.pazz.java.core.reflect;
  */
 public interface Action {
 
-    void eat();
+    void study();
 
 }
