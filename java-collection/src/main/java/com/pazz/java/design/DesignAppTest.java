@@ -45,7 +45,7 @@ import java.util.List;
 
 /**
  * delegate 委派模式
- * factory 工厂模式
+ * spring_aop_factory 工厂模式
  * prototype 原型模式
  * proxy 代理模式
  * singleton 单例模式

@@ -68,7 +68,7 @@ public final class RedisLockRegistry implements ExpirableLockRegistry {
 
     /**
      * Constructs a lock registry with the default (60 second) lock expiration.
-     * @param connectionFactory The connection factory.
+     * @param connectionFactory The connection spring_aop_factory.
      * @param registryKey The key prefix for locks.
      */
     public RedisLockRegistry(RedisConnectionFactory connectionFactory, String registryKey) {
@@ -77,7 +77,7 @@ public final class RedisLockRegistry implements ExpirableLockRegistry {
 
     /**
      * Constructs a lock registry with the supplied lock expiration.
-     * @param connectionFactory The connection factory.
+     * @param connectionFactory The connection spring_aop_factory.
      * @param registryKey The key prefix for locks.
      * @param expireAfter The expiration in milliseconds.
      */
