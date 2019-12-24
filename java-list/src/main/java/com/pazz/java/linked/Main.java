@@ -1,4 +1,4 @@
-package com.pazz.java.collection.list;
+package com.pazz.java.linked;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
  * @create: 2018/9/30 10:13
  * @description:
  */
-public class Linked_Test {
+public class Main {
 
     public static void main(String[] args) {
         /**
@@ -22,7 +22,7 @@ public class Linked_Test {
          * LinkedList       无                  Node                 N               无
          * ArrayList        10                  Object[]            N               1.5倍
          */
-        Linked_Array<String> linkedList = new Linked_Array<>();
+        CustomDeque<String> linkedList = new CustomLinkedList<>();
 
         linkedList.add("aaa");
         linkedList.add("vvv");

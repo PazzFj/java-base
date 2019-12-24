@@ -1,24 +1,18 @@
-package com.pazz.java.collection.list.list;
+package com.pazz.java.list;
 
-import java.util.AbstractList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.ListIterator;
-import java.util.NoSuchElementException;
-import java.util.Spliterator;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
 
 /**
+ * 自定义抽象list实现类
  * @author 彭坚
  * @create 2018/9/12 22:34
  * @see AbstractList
  */
-public abstract class MAbstractList<E> extends MAbstractCollection<E> implements MList<E> {
+public abstract class CustomAbstractList<E> extends CustomAbstractCollection<E> implements CustomList<E> {
 
     protected transient int modCount = 0;
 
@@ -112,7 +106,7 @@ public abstract class MAbstractList<E> extends MAbstractCollection<E> implements
     }
 
     @Override
-    public MList<E> subList(int fromIndex, int toIndex) {
+    public CustomList<E> subList(int fromIndex, int toIndex) {
         return null;
     }
 
@@ -155,7 +149,7 @@ public abstract class MAbstractList<E> extends MAbstractCollection<E> implements
             checkForComodification();
 
             try {
-                MAbstractList.this.remove(lastRet);
+                CustomAbstractList.this.remove(lastRet);
                 if (lastRet < cursor)
                     cursor--;
                 lastRet = -1;

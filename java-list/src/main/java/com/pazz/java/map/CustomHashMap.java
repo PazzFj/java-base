@@ -1,4 +1,4 @@
-package com.pazz.java.collection.map;
+package com.pazz.java.map;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.List;
 /**
  * @author: 彭坚
  * @create: 2018/12/12 22:09
- * @description:
+ * @description: 自定义HashMap
  */
-public class HashMapExample<K, V> implements IMap<K, V> {
+public class CustomHashMap<K, V> implements CustomMap<K, V> {
 
     private static int defaultLength = 1 << 4; // aka 16
     private static float defaultFactor = 0.75f;
@@ -16,11 +16,11 @@ public class HashMapExample<K, V> implements IMap<K, V> {
     private Node<K, V>[] table = null;
     private Node<K, V>[] newTable = null;
 
-    public HashMapExample() {
+    public CustomHashMap() {
         this(defaultLength, defaultFactor);
     }
 
-    public HashMapExample(int length, float factor) {
+    public CustomHashMap(int length, float factor) {
         if (length < 0) {
             throw new IllegalArgumentException("参数不能为负数" + length);
         }
@@ -125,7 +125,7 @@ public class HashMapExample<K, V> implements IMap<K, V> {
         return null;
     }
 
-    class Node<K, V> implements IMap.IEntry<K, V> {
+    class Node<K, V> implements CustomMap.IEntry<K, V> {
         K k;
         V v;
         Node<K, V> next;

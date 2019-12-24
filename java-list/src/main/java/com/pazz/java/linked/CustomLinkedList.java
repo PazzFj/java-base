@@ -1,11 +1,11 @@
-package com.pazz.java.collection.list;
+package com.pazz.java.linked;
 
 /**
  * @author: Peng Jian
  * @create: 2018/10/29 17:09
- * @description: 手写 LinkedList
+ * @description: 自定义 Linked
  */
-public class Linked_Array<E> {
+public class CustomLinkedList<E> implements CustomDeque<E> {
 
     transient NodeExample<E> first;
     transient NodeExample<E> last;
@@ -44,6 +44,9 @@ public class Linked_Array<E> {
         }
     }
 
+    /**
+     * 检测下标
+     */
     private void checkElementIndex(int index) {
         if (!isElementIndex(index)) {
             throw new IllegalStateException("index out~");
@@ -58,7 +61,7 @@ public class Linked_Array<E> {
     /**
      * 添加到头部
      */
-    void linkLast(E element) {
+    public void linkLast(E element) {
         final NodeExample l = last;
         final NodeExample newNode = new NodeExample(l, element, null);
         last = newNode;
@@ -66,6 +69,21 @@ public class Linked_Array<E> {
             first = newNode;
         } else {
             l.next = newNode;
+        }
+        size++;
+    }
+
+    /**
+     * 添加到开始
+     */
+    public void linkFirst(E element) {
+        final NodeExample<E> f = first;
+        final NodeExample<E> newNode = new NodeExample<>(null, element, f);
+        first = newNode;
+        if (f == null) {
+            last = newNode;
+        } else {
+            f.prev = newNode;
         }
         size++;
     }
@@ -93,19 +111,6 @@ public class Linked_Array<E> {
         }
         size++;
     }
-
-    private void linkFirst(E element) {
-        final NodeExample<E> f = first;
-        final NodeExample<E> newNode = new NodeExample<>(null, element, f);
-        first = newNode;
-        if (f == null) {
-            last = newNode;
-        } else {
-            f.prev = newNode;
-        }
-        size++;
-    }
-
 
     private static class NodeExample<E> {
         E item;

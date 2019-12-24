@@ -1,4 +1,4 @@
-package com.pazz.java.collection.list.list;
+package com.pazz.java.list;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -6,13 +6,14 @@ import java.util.Iterator;
 import java.util.Objects;
 
 /**
+ * 自定义抽象collection 集合类
  * @author 彭坚
  * @create 2018/9/12 22:34
  * @see java.util.AbstractCollection
  */
-public abstract class MAbstractCollection<E> implements Collection<E> {
+public abstract class CustomAbstractCollection<E> implements Collection<E> {
 
-    protected MAbstractCollection() {
+    protected CustomAbstractCollection() {
     }
 
     public abstract Iterator<E> iterator();

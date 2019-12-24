@@ -1,11 +1,11 @@
-package com.pazz.java.collection.map;
+package com.pazz.java.map;
 
 /**
  * @author: 彭坚
  * @create: 2018/12/12 22:08
  * @description:
  */
-public interface IMap<K, V> {
+public interface CustomMap<K, V> {
 
     V get(K key);
 

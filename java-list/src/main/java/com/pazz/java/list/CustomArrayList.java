@@ -1,15 +1,15 @@
-package com.pazz.java.collection.list.list;
+package com.pazz.java.list;
 
 
 import java.util.Arrays;
 import java.util.Collection;
 
 /**
+ * 自定义list 接口实现类
  * @author 彭坚
  * @create 2018/9/12 22:34
- * @see java.util.ArrayList
  */
-public class MArrayList<E> extends MAbstractList<E> {
+public class CustomArrayList<E> extends CustomAbstractList<E> implements CustomList<E> {
 
     private final static int DEFAULT_CAPACITY = 10;
 
@@ -25,12 +25,12 @@ public class MArrayList<E> extends MAbstractList<E> {
 
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 
-    public MArrayList() {
+    public CustomArrayList() {
 
         this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
     }
 
-    public MArrayList(int initialCapacity) {
+    public CustomArrayList(int initialCapacity) {
         //如果初始容量大于0 或者 等于0 否则抛异常
         if (initialCapacity > 0) {
             this.elementData = new Object[initialCapacity];
@@ -41,7 +41,7 @@ public class MArrayList<E> extends MAbstractList<E> {
         }
     }
 
-    public MArrayList(Collection<? extends E> c) {
+    public CustomArrayList(Collection<? extends E> c) {
         elementData = c.toArray();
         //把集合转成数组存入elementData 并判断elementData是否为空&不为Object[].class就Array.copyOf()
         if ((size = elementData.length) != 0) {

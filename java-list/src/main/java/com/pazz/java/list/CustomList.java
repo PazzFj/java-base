@@ -1,4 +1,4 @@
-package com.pazz.java.collection.list.list;
+package com.pazz.java.list;
 
 import java.util.Collection;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
  * @create 2018/9/12 22:34
  * @see List
  */
-public interface MList<E> extends List<E> {
+public interface CustomList<E> extends List<E> {
 
     int size();						            //集合长度
     boolean isEmpty();					        //集合是否为空
@@ -29,7 +29,7 @@ public interface MList<E> extends List<E> {
     E remove(int index);					    //清下标所对应的元素
     int indexOf(Object o);					    //对象在集合中的第一个下标
     int lastIndexOf(Object o);				    //查找最后一个对象
-    MList<E> subList(int fromIndex, int toIndex);	//截取集合
+    CustomList<E> subList(int fromIndex, int toIndex);	//截取集合
 
 
 }

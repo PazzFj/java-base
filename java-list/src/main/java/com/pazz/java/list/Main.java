@@ -1,4 +1,4 @@
-package com.pazz.java.collection.list.list;
+package com.pazz.java.list;
 
 import java.util.Iterator;
 
@@ -7,15 +7,15 @@ import java.util.Iterator;
  * @create: 2018/9/11 16:32
  * @description:
  */
-public class MList_Test {
+public class Main {
 
     public static void main(String[] args) {
-        MList<String> mList = new MArrayList<>(0);
-        mList.add("11");
-        mList.add("22");
-        mList.add("33");
+        CustomList<String> customList = new CustomArrayList<>(0);
+        customList.add("11");
+        customList.add("22");
+        customList.add("33");
 
-        Iterator iterator = mList.iterator();
+        Iterator iterator = customList.iterator();
         while(iterator.hasNext()){
             Object o = iterator.next();
             System.out.println(o);
