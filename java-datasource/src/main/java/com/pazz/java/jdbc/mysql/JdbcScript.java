@@ -4,7 +4,7 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class ScriptUtil {
+public class JdbcScript {
 
     public static void main(String[] args) throws Exception {
 
