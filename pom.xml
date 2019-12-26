@@ -12,6 +12,7 @@
         <module>java-collection</module>
         <module>java-list</module>
         <module>java-datasource</module>
+        <module>java-web</module>
     </modules>
 
     <properties>
