@@ -13,7 +13,8 @@ public class BigDecimalType {
         //中通面试经历
 
         //当{@code BigDecimal}在数值上小于、等于或大于{@code val}时，为-1、0或1。
-        BigDecimal b1 = new BigDecimal(0.5);
+        BigDecimal b1 = new BigDecimal(0.9999);
+        System.out.println(b1.intValue());
         System.out.println("比较大小：-1小于、0等于、1大于 = " + b1.compareTo(BigDecimal.ONE));
         System.out.println("************************");
 
@@ -29,16 +30,12 @@ public class BigDecimalType {
         BigDecimal bd2 = new BigDecimal("1.5");
         BigDecimal bd3;
         bd3 = bd1.add(bd2);         //相加
-        System.out.println(bd3);
 
         bd3 = bd1.multiply(bd2);    //相乘
-        System.out.println(bd3);
 
         bd3 = bd1.divide(bd2);      //相除
-        System.out.println(bd3);
 
         bd3 = bd1.subtract(bd2);    //相减
-        System.out.println(bd3);
 
         //去除小数点(返回int 类型)
         System.out.println(bd3.intValue());

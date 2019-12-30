@@ -9,15 +9,15 @@ public class DoubleFloatType {
 
     public static void main(String[] args) {
         //f结尾有 / d结尾无  / 默认结尾无
-        double a = 0.2f;
-        double b = 0.3d;
-        double c = 0.4;
-        Double d = Double.valueOf("0.55");
+        double a = 0.222f;
+        double b = 0.333d;
+        double c = 0.4444;
+        Double d = Double.valueOf("0.5555");
         System.out.println("double: " + a);      // 0.20000000298023224
         System.out.println("double: " + b);      // 0.3
         System.out.println("double: " + c);      // 0.4
         System.out.println("valueOf: " + d);     // 0.55
-        System.out.println("************************************************");
+        System.out.println("*************************************");
 
         float f1 = 10f;
         float f2 = 20l;
