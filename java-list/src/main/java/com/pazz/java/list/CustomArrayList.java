@@ -26,7 +26,6 @@ public class CustomArrayList<E> extends CustomAbstractList<E> implements CustomL
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 
     public CustomArrayList() {
-
         this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
     }
 

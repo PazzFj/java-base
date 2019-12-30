@@ -1,12 +1,12 @@
-package com.pazz.java.core.datatype;
+package com.pazz.java.data.type;
 
 /**
  * Integer 缓存池 -128~127
  */
-public class Integer_Cache_Arithmetic_Test {
+public class IntegerType {
 
     public static void main(String[] args) {
-        //自动装箱
+        //Integer 装箱、插箱
         Integer i1 = Integer.valueOf(127);
         Integer i3 = 127; //Integer.valueOf(127);
         System.out.println(i1 == i3); // true

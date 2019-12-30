@@ -17,8 +17,12 @@ public class Main {
         System.arraycopy(objects, 1, dest, 0, 2);
         System.out.println(Arrays.asList(dest));
 
+        //复制 (源数据, 长度, 数据类型)
+        Object[] targetArr = Arrays.copyOf(objects, 5, Object[].class);
+        System.out.println(Arrays.asList(targetArr));
 
-        CustomList<String> customList = new CustomArrayList<>(0);
+
+        CustomList<String> customList = new CustomArrayList<>();
         customList.add("custom1");
         customList.add("custom2");
         customList.add("custom3");

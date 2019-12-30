@@ -1,11 +1,11 @@
-package com.pazz.java.core.datatype;
+package com.pazz.java.data.type;
 
 /**
  * @author: 彭坚
  * @create: 2018/12/12 22:27
  * @description: 基数,底数
  */
-public class Double_Float_Test {
+public class DoubleFloatType {
 
     public static void main(String[] args) {
         //f结尾有 / d结尾无  / 默认结尾无

@@ -1,14 +1,13 @@
-package com.pazz.java.core.datatype;
+package com.pazz.java.data.type;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 
 /**
  * @author: 彭坚
  * @create: 2018/12/12 10:06
  * @description: 算法操作 Arithmetic Operations
  */
-public class BigDecimal_Arithmetic_Test {
+public class BigDecimalType {
 
     public static void main(String[] args) {
         //中通面试经历

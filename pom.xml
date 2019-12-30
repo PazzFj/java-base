@@ -13,6 +13,7 @@
         <module>java-list</module>
         <module>java-datasource</module>
         <module>java-web</module>
+        <module>java-core</module>
     </modules>
 
     <properties>
