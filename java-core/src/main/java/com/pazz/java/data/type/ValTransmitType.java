@@ -8,8 +8,7 @@ package com.pazz.java.data.type;
 public class ValTransmitType {
 
     public static void main(String[] args) {
-        // 值传递 与 引用传递
-        // java 对象引用是可以跨方法的.
+
     }
 
 }

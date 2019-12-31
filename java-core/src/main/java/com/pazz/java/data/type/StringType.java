@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
  * @author: 彭坚
  * @create: 2018/12/12 15:50
  * @description:
+ * // 值传递 与 引用传递
+ * // 引用传递是可以跨方法的.
  */
 public class StringType {
 

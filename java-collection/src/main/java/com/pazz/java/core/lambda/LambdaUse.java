@@ -140,7 +140,6 @@ public class LambdaUse {
         }
     }
 
-
     @Data
     private static class Entity {
         private int id;
