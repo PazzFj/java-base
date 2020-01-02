@@ -36,6 +36,7 @@
         <lombok.version>1.16.18</lombok.version>
         <netty.version>4.1.30.Final</netty.version>
         <rocketmq.version>4.1.0-incubating</rocketmq.version>
+        <javassist.version>3.24.1-GA</javassist.version>
     </properties>
 
     <dependencyManagement>
@@ -83,7 +84,11 @@
                 <artifactId>mongo-java-driver</artifactId>
                 <version>${mongo.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>${javassist.version}</version>
+            </dependency>
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>

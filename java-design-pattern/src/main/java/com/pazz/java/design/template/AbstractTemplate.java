@@ -3,24 +3,24 @@ package com.pazz.java.design.template;
 /**
  * @author: Peng Jian
  * @create: 2018/10/9 9:50
- * @description:
+ * @description: 模板模式：
  */
 public abstract class AbstractTemplate {
 
-    abstract void eat();
+    abstract void hello();
 
-    public void hello(){
-        System.out.println("hello!");
+    public void smile() {
+        System.out.println("微笑!");
     }
 
-    public void name(){
-        System.out.println("name");
+    public void handshake() {
+        System.out.println("握手");
     }
 
-    public void temp(){
+    public void temp() {
+        smile();
+        handshake();
         hello();
-        eat();
-        name();
     }
 
 }

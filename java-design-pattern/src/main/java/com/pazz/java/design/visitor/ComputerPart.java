@@ -7,6 +7,8 @@ package com.pazz.java.design.visitor;
  */
 public interface ComputerPart {
 
+    String getName();
+
     /**
      * accept 接受
      * @param computerPartVisitor

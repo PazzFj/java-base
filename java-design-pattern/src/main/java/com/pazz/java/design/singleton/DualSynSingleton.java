@@ -20,7 +20,7 @@ public class DualSynSingleton {
     private DualSynSingleton() {
     }
 
-    public static DualSynSingleton getSingleton() {
+    public static DualSynSingleton getInstance() {
         if (singleton == null) {
             synchronized (DualSynSingleton.class) {
                 if (singleton == null) {
