@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class Main {
 
     public static void main(String[] args) {
+        // filter(true)---limit(1)---skip(n)跳过某条---distinct去重
         List<Person> personList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             personList.add(new Person(i % 2 == 0 ? 1 : 2, i % 2 != 0 ? "p1" : "p2", i * 3));
@@ -28,10 +29,8 @@ public class Main {
         System.out.println("某字段最大值: " + max);
         System.out.println("某字段最小值: " + min);
 
-        List<Person> filter = personList.stream().filter(p -> p.getName().equals("p1")).collect(Collectors.toList());
-        System.out.println("false 过滤不要: " + filter.get(0).getName());
-
-
+        List<Person> filter = personList.stream().filter(p -> p.getName().equals("p1")).limit(1).collect(Collectors.toList());
+        System.out.println("false 过滤: " + filter.get(0).getName() + " limit: " + filter.size());
     }
 
     @Data
