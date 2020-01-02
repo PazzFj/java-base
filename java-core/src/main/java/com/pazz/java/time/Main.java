@@ -9,13 +9,6 @@ import java.util.Date;
 
 public class Main {
 
-    public static void test() {
-        LocalDateTime dateTime = LocalDateTime.now();
-        // 2020-01-02T11:44:27.155
-        System.out.println(dateTime);
-        System.out.println(dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
-    }
-
     public static void main(String[] args) throws Exception {
         test();
         Date currentDate = new Date();
@@ -38,9 +31,16 @@ public class Main {
         String str = "2020-12-12 23:20:00";
         Date strDate = dateFormat.parse(str);
 
-        // 比较大小
+        // 时间比较大小  这个时间 在 后面时间 之前? befor
         System.out.println(dateFormat.format(c1.getTime()) + " 在 " + "2020-12-12 23:20:00 之前 " + c1.getTime().before(strDate));
 
+    }
+
+    public static void test() {
+        LocalDateTime dateTime = LocalDateTime.now();
+        // 2020-01-02T11:44:27.155
+        System.out.println(dateTime);
+        System.out.println(dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
     }
 
 }

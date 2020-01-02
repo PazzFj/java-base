@@ -1,9 +1,5 @@
 package com.pazz.java.design.prototype;
 
-import com.pazz.java.design.prototype.impl.Circle;
-import com.pazz.java.design.prototype.impl.Rectangle;
-import com.pazz.java.design.prototype.impl.Square;
-
 import java.util.Hashtable;
 
 /**
@@ -13,7 +9,7 @@ import java.util.Hashtable;
  */
 public class ShapeCache {
 
-    private static Hashtable<String, Shape> hashTable = new Hashtable<String, Shape>();
+    private static Hashtable<String, Shape> hashTable = new Hashtable<>();
 
     public static Shape getShape(String shapeId) throws CloneNotSupportedException {
         Shape shape = hashTable.get(shapeId);
@@ -24,16 +20,13 @@ public class ShapeCache {
      * 加入缓存map中
      */
     public static void loadCache() {
-        Circle circle = new Circle("1", "circle Type");
-        circle.setId("1");
+        CircleShape circle = new CircleShape("1", "circle Type");
         hashTable.put(circle.getId(), circle);
 
-        Rectangle rectangle = new Rectangle("2", "rectangle Type");
-        rectangle.setId("2");
+        RectangleShape rectangle = new RectangleShape("2", "rectangle Type");
         hashTable.put(rectangle.getId(), rectangle);
 
-        Square square = new Square("3", "square Type");
-        square.setId("3");
+        SquareShape square = new SquareShape("3", "square Type");
         hashTable.put(square.getId(), square);
     }
 

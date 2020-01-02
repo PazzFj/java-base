@@ -17,15 +17,13 @@ public class RedisUtil {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
+    // redis 使用池
     private static Map<String, JedisPool> poolMap = new HashMap<>();
 
     private RedisUtil() {
     }
 
-    private static class RedisHolder {
-        private static final RedisUtil INSTANCE = new RedisUtil();
-    }
-
+    // 单例
     public static RedisUtil getInstance() {
         return RedisHolder.INSTANCE;
     }
@@ -44,11 +42,12 @@ public class RedisUtil {
         return poolMap.get(key);
     }
 
-    private static String key(String ip, int port){
+    private static String key(String ip, int port) {
         String key = ip + "#" + port;
         return key;
     }
 
+    // 从连接处获取redis
     public Jedis getJedis(String ip, int port) {
         Jedis jedis = null;
         int count = 0;
@@ -67,8 +66,11 @@ public class RedisUtil {
         if (jedis != null) {
             jedis.close();
             getPool(ip, port).close();
-//            getPool(ip, port).returnResource(jedis);
         }
+    }
+
+    private static class RedisHolder {
+        private static final RedisUtil INSTANCE = new RedisUtil();
     }
 
 }
