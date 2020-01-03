@@ -1,4 +1,4 @@
-package com.pazz.java.util;
+package com.pazz.java.list;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;

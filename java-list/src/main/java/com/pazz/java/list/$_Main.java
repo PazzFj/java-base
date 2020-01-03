@@ -8,7 +8,7 @@ import java.util.Iterator;
  * @create: 2018/9/11 16:32
  * @description:
  */
-public class Main {
+public class $_Main {
 
     public static void main(String[] args) {
         Object[] objects = new Object[]{"1", "2", "3"};
