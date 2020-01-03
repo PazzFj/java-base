@@ -1,15 +1,17 @@
 package com.pazz.java.design.interpreter;
 
 /**
+ * 和
+ *
  * @author pazz
  * @create 2018/1/30
  */
-public class AndExpression implements Expression {
+public class ExpressionAndImpl implements Expression {
 
-    private Expression expression1 = null;
-    private Expression expression2 = null;
+    private Expression expression1;
+    private Expression expression2;
 
-    public AndExpression(Expression expression1, Expression expression2){
+    public ExpressionAndImpl(Expression expression1, Expression expression2) {
         this.expression1 = expression1;
         this.expression2 = expression2;
     }

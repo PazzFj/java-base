@@ -8,6 +8,7 @@ package com.pazz.java.design.interpreter;
  */
 public interface Expression {
 
+    // 解释
     boolean interpret(String context);
 
 }

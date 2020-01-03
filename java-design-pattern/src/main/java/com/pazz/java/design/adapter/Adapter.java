@@ -13,8 +13,8 @@ public class Adapter extends Adaptee implements Target {
     //所以适配器只是将SpecificRequest()方法作了一层封装，封装成Target可以调用的Request()而已
     @Override
     public void request() {
-        System.out.println("我是适配器");
         this.specificRequest();
+        System.out.println("我是适配器");
     }
 
 }

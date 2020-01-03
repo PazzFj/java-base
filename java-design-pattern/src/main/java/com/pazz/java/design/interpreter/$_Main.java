@@ -8,6 +8,11 @@ package com.pazz.java.design.interpreter;
  */
 public class $_Main {
     public static void main(String[] args) {
-
+        Expression containsTest = new ExpressionContainsImpl("test");
+        Expression containsName = new ExpressionContainsImpl("name");
+        Expression and = new ExpressionAndImpl(containsTest, containsName);
+        Expression or = new ExpressionOrImpl(containsTest, containsName);
+        System.out.println(and.interpret("test"));
+        System.out.println(or.interpret("name"));
     }
 }
