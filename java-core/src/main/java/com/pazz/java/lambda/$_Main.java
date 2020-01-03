@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
  * @Auther peng jian
  * @Date 2019/12/31 16:57
  */
-public class Main {
+public class $_Main {
 
     public static void main(String[] args) {
         // filter(true)---limit(1)---skip(n)跳过某条---distinct去重

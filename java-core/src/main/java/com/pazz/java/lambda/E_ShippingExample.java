@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  * @Auther peng jian
  * @Date 2020/1/2 9:10
  */
-public class Example {
+public class E_ShippingExample {
 
     public static void main(String[] args) {
         /**

@@ -1,18 +1,25 @@
 package com.pazz.java.data.type;
 
+import java.net.URLEncoder;
+import java.text.MessageFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * @author: 彭坚
  * @create: 2018/12/12 15:50
- * @description:
- * // 值传递 与 引用传递
+ * @description: // 值传递 与 引用传递
  * // 引用传递是可以跨方法的.
  */
 public class StringType {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        // 功能描述: enc ==> utf-8 or GBK
+        String str = URLEncoder.encode("中文编码", "UTF-8");
+        // 功能描述: example ==> MessageFormat.format("name = {0}   age = {1} ", "zs", 22)
+        MessageFormat.format(str, args);
+        // 功能描述: example ==> String.format("param1 = %s param2 = %x", "pengjian", 22)
+        String.format(str, args);
 
         /**
          * char 类型 只能占一个位置 无论汉字还是字母
@@ -54,10 +61,10 @@ public class StringType {
          * 6.{n,}：表示出现n次或n次以上
          */
         //正则匹配
-        String str = "abczxcasd";
+        String strb = "abczxcasd";
 //        Pattern pattern = Pattern.compile("");
 //        Matcher matcher = pattern.matcher("*");
-        System.out.println(str.matches("[a-zA-Z]+"));
+        System.out.println(strb.matches("[a-zA-Z]+"));
 
     }
 

@@ -1,5 +1,6 @@
-package com.pazz.java.util;
+package com.pazz.java.date.time;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -64,11 +65,12 @@ public class DateUtil extends org.apache.commons.lang3.time.DateUtils {
 
     /**
      * 字符串、日期格式 转换日期
+     *
      * @param format 例如: "yyyy-MM-dd HH:mm:ss"
-     * @param str 例如: "2012-12-03 23:21:24"
+     * @param str    例如: "2012-12-03 23:21:24"
      */
     public static Date convert(String str, String format) {
-        if (!StringUtil.isEmpty(str)) {
+        if (!StringUtils.isEmpty(str)) {
             try {
                 Date date = new SimpleDateFormat(format).parse(str);
                 return date;
@@ -83,7 +85,8 @@ public class DateUtil extends org.apache.commons.lang3.time.DateUtils {
 
     /**
      * 将日期转换成format字符串
-     * @param date 例如: Sun Jun 10 09:18:00 CST 2018
+     *
+     * @param date       例如: Sun Jun 10 09:18:00 CST 2018
      * @param dateFormat 例如: "yyyy-MM-dd HH:mm:ss"
      */
     public static String convert(Date date, String dateFormat) {
@@ -107,7 +110,7 @@ public class DateUtil extends org.apache.commons.lang3.time.DateUtils {
      * 时间拼接 将日期和实现拼接 ymd 如2012-05-15 hm 如0812 最终 2012-05-15 08:12:00
      */
     public static Date concat(String ymd, String hm) {
-        if (!StringUtil.isBlank(ymd) && !StringUtil.isBlank(hm)) {
+        if (!StringUtils.isBlank(ymd) && !StringUtils.isBlank(hm)) {
             try {
                 String dateString = ymd.concat(" ").concat(hm.substring(0, 2)).concat(":").concat(hm.substring(2, 4)).concat(":00");
                 Date date = DateUtil.convert(dateString, DateUtil.DATE_TIME_FORMAT);
@@ -340,7 +343,7 @@ public class DateUtil extends org.apache.commons.lang3.time.DateUtils {
         System.out.println("newTime Date: " + newTime);
         System.out.println("newTime String: " + new SimpleDateFormat(format).format(newTime));
 
-        System.out.println("相差天数: " + (newTime.getTime() - date.getTime()) / (1000l * 24 * 60 *60));
+        System.out.println("相差天数: " + (newTime.getTime() - date.getTime()) / (1000l * 24 * 60 * 60));
         System.out.println("相差秒数: " + (newTime.getTime() - date.getTime()) / MILLIS_PER_SECOND);
 
         Calendar calendar = Calendar.getInstance();

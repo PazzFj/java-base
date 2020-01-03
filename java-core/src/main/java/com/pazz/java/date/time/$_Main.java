@@ -1,4 +1,4 @@
-package com.pazz.java.time;
+package com.pazz.java.date.time;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Main {
+public class $_Main {
 
     public static void main(String[] args) throws Exception {
         test();
