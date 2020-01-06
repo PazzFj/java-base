@@ -1,4 +1,4 @@
-package com.pazz.java.core.juc;
+package com.pazz.java.juc;
 
 /**
  * 模拟 CAS 算法

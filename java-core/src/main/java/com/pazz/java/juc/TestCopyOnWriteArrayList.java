@@ -1,4 +1,4 @@
-package com.pazz.java.core.juc;
+package com.pazz.java.juc;
 
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;

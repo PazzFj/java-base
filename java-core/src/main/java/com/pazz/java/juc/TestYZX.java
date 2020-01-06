@@ -1,4 +1,4 @@
-package com.pazz.java.core.juc;
+package com.pazz.java.juc;
 
 /**
  * @author: 彭坚

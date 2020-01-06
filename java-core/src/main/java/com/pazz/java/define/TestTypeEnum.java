@@ -6,9 +6,9 @@ package com.pazz.java.define;
  * @description:
  */
 public enum TestTypeEnum {
-    BMW_TYPE("BMW_TYPE", "宝马"),
-    AUDI_TYPE("AUDI_TYPE", "奥迪"),
-    BENZ_TYPE("BENZ_TYPE", "奔驰");
+    BMW_TYPE("BMW", "宝马"),
+    AUDI_TYPE("AUDI", "奥迪"),
+    BENZ_TYPE("BENZ", "奔驰");
 
     private String code;
     private String name;

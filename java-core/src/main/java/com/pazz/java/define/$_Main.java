@@ -8,7 +8,7 @@ package com.pazz.java.define;
 public class $_Main {
 
     public static void main(String[] args) {
-        TestTypeEnum typeEnum = TestTypeEnum.valueOf("BMW_TYPE");
+        TestTypeEnum typeEnum = TestTypeEnum.valueOf("BMW");
         System.out.println(typeEnum.getName());
     }
 

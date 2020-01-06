@@ -1,4 +1,4 @@
-package com.pazz.java.core.juc;
+package com.pazz.java.juc;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

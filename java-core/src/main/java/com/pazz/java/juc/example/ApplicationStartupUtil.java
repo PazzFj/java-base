@@ -1,4 +1,4 @@
-package com.pazz.java.core.juc.example;
+package com.pazz.java.juc.example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 /**
  * @author: 彭坚
  * @create: 2018/12/18 9:51
- * @description:
+ * @description: 应用开始工具
  */
 public class ApplicationStartupUtil {
 

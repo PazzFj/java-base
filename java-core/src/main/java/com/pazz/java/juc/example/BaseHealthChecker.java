@@ -1,11 +1,11 @@
-package com.pazz.java.core.juc.example;
+package com.pazz.java.juc.example;
 
 import java.util.concurrent.CountDownLatch;
 
 /**
  * @author: 彭坚
  * @create: 2018/12/18 9:46
- * @description:
+ * @description: 基础健康检查
  */
 public abstract class BaseHealthChecker implements Runnable {
 
@@ -33,7 +33,7 @@ public abstract class BaseHealthChecker implements Runnable {
         }
     }
 
-    //This methos needs to be implemented by all specific service checker
+    //此方法需要由所有特定的服务检查器实现
     public abstract void verifyService();
 
     public String getServiceName() {

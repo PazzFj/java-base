@@ -1,16 +1,16 @@
-package com.pazz.java.core.juc.example;
+package com.pazz.java.juc.example;
 
 /**
  * @author: 彭坚
  * @create: 2018/12/18 9:57
  * @description:
  */
-public class Testmain {
+public class $_Main {
 
     public static void main(String[] args) {
         boolean result = false;
         try {
-            result = ApplicationStartupUtil.checkExternalServices();
+            result = ApplicationStartupUtil.getInstance().checkExternalServices();
         } catch (Exception e) {
             e.printStackTrace();
         }
