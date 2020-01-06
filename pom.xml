@@ -132,16 +132,16 @@
         </dependency>
     </dependencies>
 
-    <distributionManagement>
+    <!--<distributionManagement>
         <repository>
-            <id>maven-releases</id><!--这个ID需要与你的release仓库的Repository ID一致-->
+            <id>maven-releases</id>&lt;!&ndash;这个ID需要与你的release仓库的Repository ID一致&ndash;&gt;
             <url>http://47.98.219.97:8081/repository/maven-releases</url>
         </repository>
         <snapshotRepository>
-            <id>maven-snapshots</id><!--这个ID需要与你的snapshots仓库的Repository ID一致-->
+            <id>maven-snapshots</id>&lt;!&ndash;这个ID需要与你的snapshots仓库的Repository ID一致&ndash;&gt;
             <url>http://47.98.219.97:8081/repository/maven-snapshots</url>
         </snapshotRepository>
-    </distributionManagement>
+    </distributionManagement>-->
 
     <build>
         <pluginManagement>
