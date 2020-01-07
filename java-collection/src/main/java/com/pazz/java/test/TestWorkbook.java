@@ -17,7 +17,7 @@ public class TestWorkbook {
 
     public static void main(String[] args) throws IOException {
         Workbook workbook = new SXSSFWorkbook();
-        File file = new File("F:\\TestExcel.xlsx");
+        File file = new File("F:/TestExcel.xlsx");
         // 文件不存在就创建
         file.createNewFile();
         // 获取文件得写入流

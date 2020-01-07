@@ -7,11 +7,11 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * @author: 彭坚
  * @create: 2018/12/17 22:12
- * @description:
+ * @description: 轮流打印
  */
 public class TestABCAlternate {
 
-    /*
+    /**
      * 编写一个程序，开启 3 个线程，这三个线程的 ID 分别为 A、B、C，每个线程将自己的 ID 在屏幕上打印 10 遍，要求输出的结果必须按顺序显示。
      *	如：ABCABCABC…… 依次递归
      */
@@ -41,7 +41,7 @@ public class TestABCAlternate {
     static class AlternateDemo {
         private int num = 1;//标记
         private Lock lock = new ReentrantLock();
-        private Condition condition1 = lock.newCondition();
+        private Condition condition1 = lock.newCondition(); //new条件
         private Condition condition2 = lock.newCondition();
         private Condition condition3 = lock.newCondition();
 
@@ -53,7 +53,7 @@ public class TestABCAlternate {
                 }
                 System.out.println(Thread.currentThread().getName() + "\t" + totalLoop);
                 num = 2;
-                condition2.signal();
+                condition2.signal();    //发信号
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
