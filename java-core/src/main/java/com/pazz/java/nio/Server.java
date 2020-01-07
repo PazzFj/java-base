@@ -13,20 +13,27 @@ import java.nio.file.StandardOpenOption;
  * @create: 2020/1/6 21:09
  * @description: 服务端 nio
  */
-public class ServerSocket {
+public class Server {
 
-    public static void send() throws Exception {
-        // 1、打开管道并绑定端口
+    public static void main(String[] args) throws Exception {
+        send("E:/download/IO_Stream3.png");
+    }
+
+    public static void send(String filePath) throws Exception {
+        // 1、开启服务端绑定端口
         ServerSocketChannel socketChannel = ServerSocketChannel.open();
         socketChannel.bind(new InetSocketAddress(8899));
 
-        // 2、设置文件内管道
-        FileChannel fileChannel = FileChannel.open(Paths.get("f:/images/Alienware壁纸.jpg"), StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE);
+        // 2、创建管道副本 ( FileChannel )
+        FileChannel fileChannel = FileChannel.open(Paths.get(filePath), StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE);
 
-        SocketChannel channel = socketChannel.accept();
-        // 3、设置缓存区
+        // 3、创建缓存区 ( ByteBuffer )
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
 
+        // 4、创建连接管道
+        SocketChannel channel = socketChannel.accept();
+
+        // 5、连接管道循环读取缓存区
         while (channel.read(byteBuffer) != -1) {
             byteBuffer.flip(); //弹
             fileChannel.write(byteBuffer);
