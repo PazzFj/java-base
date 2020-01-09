@@ -12,6 +12,7 @@ package com.pazz.java.design;
  * singleton 单例模式
  * strategy 策略模式
  * template 模板模式
+ * responsibility 责任链模式
  */
 public class DesignAppTest {
     public static void main(String[] args) throws Exception {
