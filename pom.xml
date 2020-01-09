@@ -9,7 +9,6 @@
     <packaging>pom</packaging>
     <version>1.0.0</version>
     <modules>
-        <module>java-collection</module>
         <module>java-list</module>
         <module>java-datasource</module>
         <module>java-web</module>
@@ -38,6 +37,9 @@
         <rocketmq.version>4.1.0-incubating</rocketmq.version>
         <javassist.version>3.24.1-GA</javassist.version>
         <commons.logging.version>1.2</commons.logging.version>
+        <poi.version>3.13</poi.version>
+        <mail.version>1.4.7</mail.version>
+        <baidu.sdk.version>4.8.0</baidu.sdk.version>
     </properties>
 
     <dependencyManagement>
@@ -120,6 +122,30 @@
                 <artifactId>rocketmq-client</artifactId>
                 <version>${rocketmq.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-scratchpad</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>${mail.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baidu.aip</groupId>
+                <artifactId>java-sdk</artifactId>
+                <version>${baidu.sdk.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
