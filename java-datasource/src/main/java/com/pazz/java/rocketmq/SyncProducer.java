@@ -11,7 +11,7 @@ public class SyncProducer {
     public static void main(String[] args) throws Exception {
         // 实例化一个生产者组名称。
         DefaultMQProducer producer = new DefaultMQProducer("SyncProducerGroup");
-        producer.setNamesrvAddr("47.101.167.134:9876");
+        producer.setNamesrvAddr("localhost:9876");
         producer.setVipChannelEnabled(false);
         // 启动实例。
         producer.start();

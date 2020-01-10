@@ -13,9 +13,9 @@ import java.util.List;
 /**
  * @author: 彭坚
  * @create: 2019/1/16 23:50
- * @description:
+ * @description: 定时发送消息 (此消息将在m秒后传递给使用者。)
  */
-public class ScheduledMessageExample {
+public class ScheduledExample {
 
     public static void main(String[] args) throws Exception {
         //应该看到消息比其存储时间晚10秒消耗。
