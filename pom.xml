@@ -13,7 +13,7 @@
         <module>java-datasource</module>
         <module>java-web</module>
         <module>java-core</module>
-        <module>java-design-pattern</module>
+        <module>java-design</module>
     </modules>
 
     <properties>
