@@ -18,6 +18,12 @@ public class IntegerType {
         System.out.println(a >>> 3);   // (右移三位)  c除2^3
         System.out.println(a >> 1);    // (右移二位)  c除2^1
         System.out.println(a << 2);    // (左移二位)  c乘2^2
+
+        System.out.println(isPowerOfTwo(4));    // 是否 2次幂
+    }
+
+    private static boolean isPowerOfTwo(int val) {
+        return (val & -val) == val;
     }
 
 }
