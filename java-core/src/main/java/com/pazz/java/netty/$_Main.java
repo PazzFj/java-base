@@ -9,11 +9,9 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import org.junit.Test;
 
-import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
 import java.util.Date;
 
@@ -41,9 +39,9 @@ public class $_Main {
                 .channel(NioServerSocketChannel.class)  // 说明一个新的Channel如何接收进来的连接
                 .localAddress(8899)
                 .option(ChannelOption.SO_BACKLOG, 1024) // 标识当服务器请求处理线程全满时，用于临时存放已完成三次握手的请求的队列的最大长度
-                .childHandler(new ChannelInitializer<SocketChannel>() {
+                .childHandler(new ChannelInitializer<NioServerSocketChannel>() {
                     @Override
-                    protected void initChannel(SocketChannel sc) throws Exception { // NioServerSocketChannel
+                    protected void initChannel(NioServerSocketChannel sc) throws Exception { // NioServerSocketChannel
 
                         // 处理接收到的请求 DefaultChannelPipeline
                         sc.pipeline().addLast(new SimpleChannelInboundHandler<Object>() {
