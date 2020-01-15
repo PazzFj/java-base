@@ -14,6 +14,20 @@ import java.util.regex.Pattern;
 public class StringType {
 
     public static void main(String[] args) throws Exception {
+
+        TeB b = new TeB();
+        b.name = "test";
+
+        TeB b2 = new TeB();
+        b2.name = "AA";
+
+        TeB b3 = new TeB();
+        b3.name = "CC";
+
+        b = b2;
+        b2 = null;
+        System.out.println(b.name);
+
         // 功能描述: enc ==> utf-8 or GBK
         String str = URLEncoder.encode("中文编码", "UTF-8");
         // 功能描述: example ==> MessageFormat.format("name = {0}   age = {1} ", "zs", 22)
@@ -66,6 +80,10 @@ public class StringType {
 //        Matcher matcher = pattern.matcher("*");
         System.out.println(strb.matches("[a-zA-Z]+"));
 
+    }
+
+    public static class TeB{
+        String name;
     }
 
 
