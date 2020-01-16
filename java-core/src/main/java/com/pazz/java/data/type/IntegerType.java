@@ -1,5 +1,7 @@
 package com.pazz.java.data.type;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * Integer 缓存池 -128~127
  */
@@ -20,6 +22,11 @@ public class IntegerType {
         System.out.println(a << 2);    // (左移二位)  c乘2^2
 
         System.out.println(isPowerOfTwo(4));    // 是否 2次幂
+
+        AtomicInteger idx = new AtomicInteger();     //0开始
+        System.out.println(Math.abs(idx.getAndIncrement() % 7));
+        System.out.println(Math.abs(idx.getAndIncrement() % -8));
+        System.out.println(Math.abs(idx.getAndIncrement() % 8));
     }
 
     private static boolean isPowerOfTwo(int val) {
