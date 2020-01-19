@@ -26,6 +26,9 @@ public class ExecutorMain {
         threadPool1.execute(() -> {
             System.out.println("execute run...");
         });
+
+        scheduledThreadPool.execute(() -> System.out.println("111111111111111"));
+
         scheduledThreadPool.schedule(() -> {
             System.out.println("schedule run...");
         }, 5, TimeUnit.SECONDS);
