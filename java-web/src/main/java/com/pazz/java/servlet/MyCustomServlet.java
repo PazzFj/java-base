@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
@@ -18,7 +17,7 @@ import java.util.*;
  * @create: 2019/12/26 20:58
  * @description:
  */
-public class CustomServlet extends HttpServlet {
+public class MyCustomServlet extends HttpServlet {
 
     //加载配置文件
     private Properties properties;
@@ -36,7 +35,7 @@ public class CustomServlet extends HttpServlet {
     Map<String, Object> controllerMap = new HashMap<>();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try {
             doDispatch(req, resp);
         } catch (Exception e) {
@@ -81,7 +80,6 @@ public class CustomServlet extends HttpServlet {
         }
         Method method = handlerMapping.get(uri);
         Class<?>[] clazz = method.getParameterTypes();  // 请求参数类型
-//        Map<String, String[]> parameterMap = req.getParameterMap(); // 获取请求的参数
         Enumeration enumeration = req.getParameterNames();
         Parameter[] parameters = method.getParameters();
 
@@ -98,29 +96,17 @@ public class CustomServlet extends HttpServlet {
                 objects[i] = resp;
                 continue;
             }
-//            if (requestParam.equals("String")){
-//                for (Map.Entry<String, String[]> param : parameterMap.entrySet()){
-//                    String value = Arrays.toString(param.getValue()).replaceAll("\\[|\\]", "").replaceAll(",\\s", "");
-//                    objects[i] = value;
-//                }
-//            }
 
-            CustomReqParam customReqParam = parameters[i].getDeclaredAnnotation(CustomReqParam.class);
-            if (null != customReqParam) {
+            MyRequestParam myRequestParam = parameters[i].getDeclaredAnnotation(MyRequestParam.class);
+            if (null != myRequestParam) {
 //                MyRequestParam myRequestParam = clazz[i].getAnnotation(MyRequestParam.class);
-                String name = customReqParam.value();
+                String name = myRequestParam.value();
                 while(enumeration.hasMoreElements()){
                     String value = enumeration.nextElement().toString();
                     if(value.equals(name)){
                         objects[i] = req.getParameter(name);
                     }
                 }
-//                for (Map.Entry<String, String[]> param : parameterMap.entrySet()) {
-//                    if (param.getKey().equals(name)) {
-//                        String value = Arrays.toString(name.getBytes()).replaceAll("\\[|\\]", "").replaceAll(",\\s", "");
-//                        objects[i] = value;
-//                    }
-//                }
             }
         }
 
@@ -138,7 +124,7 @@ public class CustomServlet extends HttpServlet {
     }
 
     //2.初始化所有相关联的类,扫描用户设定的包下面所有的类
-    private void doScanner(String path) throws FileNotFoundException {
+    private void doScanner(String path) {
         File file = new File(this.getClass().getResource("/").getPath() + path.replace(".", "/"));
         for (File f : file.listFiles()) {
             if (!f.isDirectory()) {
@@ -158,7 +144,7 @@ public class CustomServlet extends HttpServlet {
         classNames.forEach(className -> {
             try {
                 Class<?> clazz = Class.forName(className);
-                if (clazz.isAnnotationPresent(CustomController.class)) {
+                if (clazz.isAnnotationPresent(MyTestController.class)) {
                     ioc.put(toLowerFirstWord(clazz.getName()), clazz.newInstance());
                 }
             } catch (ClassNotFoundException e) {
@@ -177,23 +163,23 @@ public class CustomServlet extends HttpServlet {
             return;
         for (Map.Entry<String, Object> entry : ioc.entrySet()) {
             Class c = entry.getValue().getClass();
-            if (!c.isAnnotationPresent(CustomController.class)) {
+            if (!c.isAnnotationPresent(MyTestController.class)) {
                 continue;
             }
             //拼url时,是controller头的url拼上方法上的url
             String baseUrl = "";
-            if (c.isAnnotationPresent(CustomReqMapping.class)) {
-                CustomReqMapping customReqMapping = (CustomReqMapping) c.getAnnotation(CustomReqMapping.class);
-                baseUrl = customReqMapping.value();
+            if (c.isAnnotationPresent(MyRequestMapping.class)) {
+                MyRequestMapping myRequestMapping = (MyRequestMapping) c.getAnnotation(MyRequestMapping.class);
+                baseUrl = myRequestMapping.value();
             }
 
             Method[] methods = c.getMethods();
             for (Method method : methods) {
-                if (!method.isAnnotationPresent(CustomReqMapping.class)) {
+                if (!method.isAnnotationPresent(MyRequestMapping.class)) {
                     continue;
                 }
-                CustomReqMapping customReqMapping = method.getAnnotation(CustomReqMapping.class);
-                String url = customReqMapping.value();
+                MyRequestMapping myRequestMapping = method.getAnnotation(MyRequestMapping.class);
+                String url = myRequestMapping.value();
                 url = (baseUrl + "/" + url).replaceAll("/+", "/");
                 handlerMapping.put(url, method);
                 controllerMap.put(url, c.newInstance());

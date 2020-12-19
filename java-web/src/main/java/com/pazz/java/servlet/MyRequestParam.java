@@ -5,7 +5,7 @@ import java.lang.annotation.*;
 @Target(ElementType.PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface CustomReqParam {
+public @interface MyRequestParam {
 
     /**
      * 表示参数的别名，必填

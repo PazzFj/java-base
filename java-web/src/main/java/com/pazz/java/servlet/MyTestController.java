@@ -5,7 +5,7 @@ import java.lang.annotation.*;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface CustomController {
+public @interface MyTestController {
 
     /**
      * 表示给controller注册别名
