@@ -31,7 +31,7 @@
         <javax.servlet.version>3.1.0</javax.servlet.version>
         <junit.version>4.12</junit.version>
         <cglib.version>3.1</cglib.version>
-        <guava.version>25.1-jre</guava.version>
+        <guava.version>29.0-jre</guava.version>
         <lombok.version>1.16.18</lombok.version>
         <netty.version>4.1.30.Final</netty.version>
         <rocketmq.version>4.1.0-incubating</rocketmq.version>
