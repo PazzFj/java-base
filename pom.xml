@@ -37,7 +37,7 @@
         <rocketmq.version>4.1.0-incubating</rocketmq.version>
         <javassist.version>3.24.1-GA</javassist.version>
         <commons.logging.version>1.2</commons.logging.version>
-        <poi.version>3.13</poi.version>
+        <poi.version>5.2.1</poi.version>
         <mail.version>1.4.7</mail.version>
         <baidu.sdk.version>4.8.0</baidu.sdk.version>
         <slf4j.version>1.7.25</slf4j.version>
